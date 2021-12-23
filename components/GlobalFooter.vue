@@ -3,7 +3,8 @@
     <div class="footer-wrapper">
       <h1 class="text-18 text-md-22 mb-4 mb-md-3">CONTACT</h1>
       <p class="mb-3">
-        프로젝트 문의와 채용, 기타 문의는 모두 메일로 받고 있습니다.
+        프로젝트 문의와 채용, 기타 문의는 모두 메일로 받고 있습니다. push fast
+        test
       </p>
     </div>
   </footer>
