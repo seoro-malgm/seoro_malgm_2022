@@ -1,0 +1,18 @@
+.fade-show-enter-active {
+  transition: all 0.4s ease;
+}
+.fade-show-leave-active {
+  transition: all 0.4s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.fade-show-enter,
+.fade-show-leave-to {
+  opacity: 0;
+}
+
+.navbar {
+  transform: scale(1);
+  transition: 0.3s;
+  &.active {
+    transform: scale(0.7) translate(-3rem, -0.2rem);
+  }
+}

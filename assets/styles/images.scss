@@ -1,0 +1,77 @@
+$ratios: (
+  15,
+  20,
+  35,
+  40,
+  50,
+  55,
+  60,
+  65,
+  67,
+  38,
+  40,
+  70,
+  90,
+  96,
+  100,
+  110,
+  120,
+  125,
+  130,
+  141,
+  150,
+  160,
+  149,
+  200
+);
+
+.bg-img {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  background: transparent center no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    object-fit: contain;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+  @each $var in $ratios {
+    &.ratio-#{$var} {
+      padding-bottom: #{$var}#{"%"};
+    }
+    @media screen and (max-width: 940px) {
+      &.ratio-sm-#{$var} {
+        padding-bottom: #{$var}#{"%"} !important;
+        background-position: left top;
+      }
+    }
+  }
+}
+
+.img-contain {
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+$md-ratios: (38);
+@media screen and (min-width: 768px) {
+  .img-md-contain {
+    width: 100%;
+    height: 100%;
+    background-position: center top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    @each $var in $md-ratios {
+      &.md-ratios-#{$var} {
+        padding-bottom: #{$var}#{"%"} !important;
+      }
+    }
+  }
+}

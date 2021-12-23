@@ -1,0 +1,188 @@
+@font-face {
+  font-family: "Pretendard-ExtraLight";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraLight.woff")
+    format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
+    format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+body {
+  font-family: "Pretendard-Regular", sans-serif;
+  letter-spacing: -0.02rem;
+}
+input[type="password"] {
+  font-family: "Pretendard-Regular", sans-serif;
+}
+
+@for $var from 2 through 9 {
+  .fw-#{$var}#{"00"} {
+    font-weight: #{$var}#{"00"};
+  }
+}
+
+$font-size: (
+  6,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  20,
+  21,
+  22,
+  24,
+  26,
+  27,
+  28,
+  30,
+  32,
+  34,
+  36,
+  40,
+  48,
+  50,
+  52,
+  56,
+  80,
+  96
+);
+
+$font-md-size: (
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  18,
+  20,
+  24,
+  26,
+  28,
+  30,
+  32,
+  34,
+  36,
+  40,
+  52,
+  63
+);
+
+@media print {
+  @each $var in $font-size {
+    .text-pr-#{$var} {
+      font-size: #{$var}rem;
+    }
+  }
+}
+
+@each $var in $font-size {
+  .text-#{$var} {
+    font-size: #{$var}px;
+  }
+  .btn {
+    &.text-#{$var} {
+      font-size: #{$var}px;
+    }
+  }
+  input {
+    &.text-#{$var} {
+      font-size: #{$var}px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  @each $var in $font-md-size {
+    .text-md-#{$var} {
+      font-size: #{$var}px;
+    }
+    .btn {
+      &.text-md-#{$var} {
+        font-size: #{$var}px;
+      }
+    }
+    input {
+      &.text-md-#{$var} {
+        font-size: #{$var}px;
+      }
+    }
+  }
+}
+
+$line-heights: (135, 160, 165, 170, 180, 200, 225);
+
+@each $var in $line-heights {
+  .lh-#{$var} {
+    // line-height: math.div($var, 100);
+  }
+}
+
+.break-keep {
+  word-break: keep-all !important;
+}
+
+.underline {
+  text-decoration: underline !important;
+}
+
+.word-break {
+  word-break: normal;
+}
+@media screen and (max-width: 768px) {
+  .text-md-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    // white-space: nowrap;
+  }
+}
+
+[role="radiogroup"] {
+  &[tag] {
+    .custom-radio {
+      input {
+        display: none;
+      }
+      label {
+        &::before,
+        &::after {
+          display: none;
+        }
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+.text-strike {
+  text-decoration: line-through;
+}

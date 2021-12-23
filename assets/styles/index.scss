@@ -1,0 +1,121 @@
+// @use 'sass:math';
+@import "./font.scss";
+@import "./icons.scss";
+@import "./images.scss";
+@import "./transition.scss";
+@import "./variables.scss";
+// bootstrap-vue
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap.scss";
+@import "bootstrap-vue/src/index.scss";
+
+body,
+html,
+#app {
+  overflow-x: hidden;
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-track {
+    width: 8px;
+    background-color: $secondary;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 5px;
+    background-color: $primary;
+    border: 1px solid $secondary;
+    background-clip: padding-box;
+    border-radius: 9999px;
+  }
+  scroll-behavior: smooth;
+}
+#app {
+  word-break: keep-all;
+  min-height: 100vh;
+  flex-direction: column;
+  display: flex;
+  overflow-x: hidden;
+  // text-transform: capitalize;
+  *::selection {
+    background-color: $darkest;
+    color: $secondary;
+    text-shadow: 2px 2px 8px rgba($color: $primary, $alpha: 1);
+  }
+}
+body {
+  background-color: $secondary;
+  color: $primary;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+figure {
+  margin: 0;
+}
+
+.btn {
+  &:focus,
+  &:active,
+  .active {
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+  transition: none;
+  &.text,
+  &.link {
+    color: $secondary;
+  }
+}
+
+// flex
+$flex-aligns: "center-between" center space-between,
+  "center-center" center center;
+@each $name, $align, $justify in $flex-aligns {
+  .d-flex-#{$name} {
+    display: flex;
+    align-items: #{$align};
+    justify-content: #{$justify};
+  }
+}
+
+.white-space-nowrap {
+  white-space: nowrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+// scroll
+.horzion-scroll {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  width: 100%;
+  // width
+  &::-webkit-scrollbar {
+    // width: none;
+    // height: 2px;
+    // border: none;
+    display: none;
+  }
+}
+
+p {
+  font-size: 13px;
+  @media all and (min-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
