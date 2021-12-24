@@ -8,21 +8,24 @@
           :class="
             scrollY < aboutHeight ? 'position-fixed' : 'position-absolute'
           "
+          :style="scrollY < aboutHeight ? {} : { top: `${aboutHeight}px` }"
         />
       </div>
     </article>
-    <article class="mt-75vh">
+    <article class="mt-100vh min-vh-100">
+      <h1>
+        Currunt Works
+      </h1>
+      <b-btn variant="primary">more works</b-btn>
+    </article>
+    <article class="">
       <client-only>
         <section-marquee :items="categories" />
         <section-marquee :items="categories" :reverse="true" />
+        <section-marquee :items="categories" />
       </client-only>
     </article>
-    <article class="min-vh-100">
-      <h1>
-        Works
-      </h1>
-    </article>
-    <article class="pb-5">
+    <article>
       <heading-section title="product" />
       <b-container tag="section">
         <b-row>
@@ -247,7 +250,7 @@ export default {
       window.addEventListener("scroll", () => {
         const w = window.screen.availWidth;
         const y = window.scrollY;
-        camera.position.set(0, 0, w < 768 ? y * 0.048 + 11 : y * 0.065 + 4);
+        camera.position.set(0, 0, w < 768 ? y * 0.0048 : y * 0.065 + 4);
         // console.log(cube.rotation.z);
         // if (cube.rotation.z >= 0.78) {
         //   cube.rotation.set(0, 0, 0.78);
@@ -263,25 +266,26 @@ export default {
 
 <style lang="scss" scoped>
 article {
-  margin: 0 0 24px;
-  padding: 0 0 24px;
+  margin: 24px 0 120px;
+  padding: 48px 0;
 }
 
 .about-wrapper {
   width: 100%;
   height: 100%;
   min-width: 100vw;
-  min-height: 85vh;
+  min-height: 100vh;
   background-color: transparent;
   margin: 0 -2rem;
 
   #canvas {
     top: 0;
     left: 0;
+    z-index: 2000;
   }
 }
 
-.mt-75vh {
-  margin-top: 75vh;
+.mt-100vh {
+  margin-top: 100vh;
 }
 </style>

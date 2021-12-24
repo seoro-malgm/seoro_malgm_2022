@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <header>
-      <global-nav v-if="$route.name !== 'index'" />
+      <global-nav />
     </header>
     <div id="wrapper" :class="{ 'footer-shown': footerShown }">
-      <div class="dim" />
+      <div class="dim" :style="footerShown ? { pointerEvents: 'auto' } : {}" />
       <b-container fluid tag="main" id="main">
         <Nuxt />
       </b-container>
@@ -69,7 +69,7 @@ export default {
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color: rgba($color: #000000, $alpha: 0.4);
+    background-color: rgba($color: $darkest, $alpha: 0.85);
     transition: all 0.4s $ease-in-out;
     z-index: 1990;
     pointer-events: none;

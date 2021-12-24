@@ -10,7 +10,7 @@
             }
           : {},
         {
-          transform: `translateX(${scrollY * 0.05 * reversed}%)`
+          transform: `translateX(${scrollY * 0.03 * reversed}%)`
         }
       ]"
     >

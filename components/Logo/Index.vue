@@ -112,10 +112,10 @@ export default {
       scene.add(tourus);
 
       // light
-      const light = new THREE.DirectionalLight(0xededed, 1);
+      const light = new THREE.DirectionalLight(0xffffff, 0.45);
       light.position.set(10, 15, 40);
       light.castShadow = true;
-      scene.add(new THREE.AmbientLight(0xededed), light);
+      scene.add(new THREE.AmbientLight(0xffffff), light);
 
       // fog
       scene.fog = new THREE.Fog(0x222222, 0.025, 30);
