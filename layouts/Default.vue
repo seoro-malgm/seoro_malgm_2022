@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <global-nav />
+      <global-nav v-if="$route.name !== 'index'" />
     </header>
     <div id="wrapper" :class="{ 'footer-shown': footerShown }">
       <div class="dim" />
@@ -9,13 +9,15 @@
         <Nuxt />
       </b-container>
     </div>
-
     <global-footer ref="footer" :active="footerShown" />
   </div>
 </template>
 
 <script>
 export default {
+  asyncData(app) {
+    return app;
+  },
   data() {
     return {
       footerShown: false
@@ -39,7 +41,7 @@ export default {
       );
       const gap = scrollHeight - window.scrollY;
       const footerHeight = this.$refs.footer.$el.offsetHeight;
-      this.footerShown = gap <= window.innerHeight + footerHeight / 3;
+      this.footerShown = gap <= window.innerHeight + footerHeight / 2;
     }
   }
 };
@@ -54,7 +56,7 @@ export default {
   background-color: $secondary;
 }
 #main {
-  padding: 60px 2rem 0;
+  padding: 0 2rem 0;
 }
 
 #wrapper {
