@@ -7,10 +7,6 @@
       <div class="dim" />
       <b-container fluid tag="main" id="main">
         <Nuxt />
-        <div class="min-vh-100"></div>
-        <div class="min-vh-100"></div>
-        <div class="min-vh-100"></div>
-        <h1 class="">내용</h1>
       </b-container>
     </div>
 
@@ -43,7 +39,7 @@ export default {
       );
       const gap = scrollHeight - window.scrollY;
       const footerHeight = this.$refs.footer.$el.offsetHeight;
-      this.footerShown = gap <= window.innerHeight + footerHeight / 2;
+      this.footerShown = gap <= window.innerHeight + footerHeight / 3;
     }
   }
 };
@@ -55,7 +51,7 @@ export default {
   overflow-x: hidden;
 }
 #app {
-  background-color: var(--secondary);
+  background-color: $secondary;
 }
 #main {
   padding: 60px 2rem 0;
@@ -63,7 +59,7 @@ export default {
 
 #wrapper {
   padding-bottom: 2rem;
-  transition: 0.6s;
+  transition: all 0.4s $ease-in-out;
   position: relative;
   overflow: hidden;
   .dim {
@@ -72,16 +68,22 @@ export default {
     height: 100%;
     position: absolute;
     background-color: rgba($color: #000000, $alpha: 0.4);
-    transition: 0.6s;
+    transition: all 0.4s $ease-in-out;
     z-index: 1990;
     pointer-events: none;
     user-select: none;
   }
   &.footer-shown {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    @media all and (max-width: 768px) {
+      margin-left: 2vw;
+      margin-right: 2vw;
+    }
+    border-radius: 2rem;
     .dim {
       opacity: 1;
     }
-    border-radius: 0 0 2rem 2rem;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div role="navigation">
     <div v-show="isLoaded">
       <canvas ref="logo" height="48" />
     </div>

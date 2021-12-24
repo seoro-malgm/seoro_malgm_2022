@@ -22,6 +22,8 @@
   font-style: normal;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Vollkorn&display=swap");
+
 h1,
 h2,
 h3,
@@ -37,6 +39,10 @@ body {
 }
 input[type="password"] {
   font-family: "Pretendard-Regular", sans-serif;
+}
+
+.text-vollkorn {
+  font-family: "Vollkorn", serif;
 }
 
 @for $var from 2 through 9 {

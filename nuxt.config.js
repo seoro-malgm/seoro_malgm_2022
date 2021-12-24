@@ -131,6 +131,7 @@ export default {
       lang: "scss"
     }
   ],
+
   plugins: [
     { src: "@/plugins/common.js" }
     // { src: "@/plugins/three.js", ssr: false }
@@ -143,7 +144,11 @@ export default {
     transpile: ["three"]
   },
 
-  modules: ["bootstrap-vue/nuxt"],
+  modules: ["bootstrap-vue/nuxt", "@nuxtjs/style-resources"],
+
+  styleResources: {
+    scss: ["@/assets/styles/variables.scss"]
+  },
   bootstrapVue: {
     // bootstrapCSS: false,
     // bootstrapVueCSS: false

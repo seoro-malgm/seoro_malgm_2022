@@ -1,6 +1,11 @@
 <template>
   <b-navbar class="navbar" :class="{ active: active }">
-    <b-navbar-brand href="/" class="mx-auto ml-md-0">
+    <b-navbar-brand
+      href="/"
+      class="mx-auto ml-md-0"
+      title="서로맑음"
+      role="link"
+    >
       <Logo />
     </b-navbar-brand>
   </b-navbar>
