@@ -3,13 +3,13 @@
     <div v-show="isLoaded">
       <canvas ref="logo" height="48" />
     </div>
-    <div
+    <!-- <div
       class="text-primary h-100 d-flex flex-column justify-content-center align-items-center"
       v-if="!isLoaded"
       :style="{ minHeight: '56px' }"
     >
       <h1 class="text-20 text-md-24">서로맑음</h1>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -70,7 +70,7 @@ export default {
 
       // options
       const option = {
-        color: 0x333399
+        color: 0xededed
       };
 
       // renderer
@@ -98,17 +98,17 @@ export default {
       r3.position.set(-7.5, -4, 0);
       scene.add(r1, r2, r3);
       // M
-      const m_geometry = new THREE.TorusGeometry(5.5, 1.7, 5, 4);
+      const m_geometry = new THREE.TorusGeometry(5.5, 1.7, 4, 4);
       const m_material = new THREE.MeshStandardMaterial(option);
       const cube = new THREE.Mesh(m_geometry, m_material);
       scene.add(cube);
-      cube.position.set(3.7, 0, 0);
+      cube.position.set(3.8, 0, 0);
       cube.rotation.set(0, 0, -0.775);
       // O
       const o_geometry = new THREE.TorusGeometry(4.5, 1, 10, 50);
       const o_material = new THREE.MeshStandardMaterial(option);
       const tourus = new THREE.Mesh(o_geometry, o_material);
-      tourus.position.set(16, 0, 0);
+      tourus.position.set(15.7, 0, 0);
       scene.add(tourus);
 
       // light

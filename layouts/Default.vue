@@ -1,12 +1,16 @@
 <template>
   <div id="app">
     <header>
-      <global-nav />
+      <global-nav :scrollY="scrollY" />
     </header>
     <div id="wrapper" :class="{ 'footer-shown': footerShown }">
       <div class="dim" :style="footerShown ? { pointerEvents: 'auto' } : {}" />
       <b-container fluid tag="main" id="main">
-        <Nuxt />
+        <nuxt-child
+          :scrollY="scrollY"
+          :scrollGap="scrollGap"
+          :scrollHeight="scrollHeight"
+        />
       </b-container>
     </div>
     <global-footer ref="footer" :active="footerShown" />
@@ -15,12 +19,13 @@
 
 <script>
 export default {
-  asyncData(app) {
-    return app;
-  },
   data() {
     return {
-      footerShown: false
+      footerShown: false,
+      scrollY: 0,
+      scrollGap: null,
+      scrollHeight: null,
+      footerHeight: null
     };
   },
   beforeMount() {
@@ -39,9 +44,13 @@ export default {
         document.body.clientHeight,
         document.documentElement.clientHeight
       );
-      const gap = scrollHeight - window.scrollY;
+
+      this.scrollHeight = scrollHeight;
+      this.scrollY = window.scrollY;
+      this.scrollGap = scrollHeight - window.scrollY;
       const footerHeight = this.$refs.footer.$el.offsetHeight;
-      this.footerShown = gap <= window.innerHeight + footerHeight / 2;
+      this.footerShown =
+        this.scrollGap <= window.innerHeight + footerHeight / 2;
     }
   }
 };
@@ -51,9 +60,6 @@ export default {
 #main {
   min-height: 100vh;
   overflow-x: hidden;
-}
-#app {
-  background-color: $secondary;
 }
 #main {
   padding: 0 2rem 0;
@@ -76,8 +82,8 @@ export default {
     user-select: none;
   }
   &.footer-shown {
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
     @media all and (max-width: 768px) {
       margin-left: 2vw;
       margin-right: 2vw;

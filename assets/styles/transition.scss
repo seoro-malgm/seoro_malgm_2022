@@ -8,11 +8,3 @@
 .fade-show-leave-to {
   opacity: 0;
 }
-
-.navbar {
-  transform: scale(1);
-  transition: 0.3s;
-  &.active {
-    transform: scale(0.7) translate(-3rem, -0.2rem);
-  }
-}

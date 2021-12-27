@@ -8,28 +8,79 @@
           :class="
             scrollY < aboutHeight ? 'position-fixed' : 'position-absolute'
           "
+          class="d-none d-md-block"
           :style="scrollY < aboutHeight ? {} : { top: `${aboutHeight}px` }"
         />
+        <h2
+          class="d-block d-md-none text-14 w-100 text-center position-absolute text-uppercase"
+          :style="{ bottom: '10vh' }"
+        >
+          Scroll Down
+        </h2>
       </div>
     </article>
-    <article class="mt-100vh min-vh-100">
-      <h1>
-        Currunt Works
-      </h1>
-      <b-btn variant="primary">more works</b-btn>
+
+    <article class="mt-100vh">
+      <div class="text-center text-vollkorn text-80">
+        CROSS, ROAD, RESULT, POINT
+      </div>
+      <b-row align-h="center">
+        <b-col cols="12" md="7">
+          <p class="mt-3 text-center">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum
+            reprehenderit aut, alias delectus esse enim et iusto magnam, earum
+            similique eligendi reiciendis aperiam praesentium cupiditate quam
+            voluptate facere maxime recusandae. Lorem ipsum dolor sit amet
+            consectetur, adipisicing elit. Dolorum reprehenderit aut, alias
+            delectus esse enim et iusto magnam, earum similique eligendi
+            reiciendis aperiam praesentium cupiditate quam voluptate facere
+            maxime recusandae.Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Dolorum reprehenderit aut, alias delectus esse
+            enim et iusto magnam, earum similique eligendi reiciendis aperiam
+            praesentium cupiditate quam voluptate facere maxime recusandae.
+          </p>
+        </b-col>
+      </b-row>
     </article>
-    <article class="">
+    <article class="min-vh-100 p-5 bg-secondary text-primary">
+      <heading-section title="Current Works" />
+      <b-row v-for="(item, i) in 3" :key="i" class="mb-4">
+        <b-col>
+          <div class="bg-img ratio-67 bg-darkest"></div>
+        </b-col>
+        <b-col>
+          <div class="bg-img ratio-67 bg-darkest"></div>
+        </b-col>
+        <b-col>
+          <div class="bg-img ratio-67 bg-darkest"></div>
+        </b-col>
+      </b-row>
+      <div class="text-center">
+        <b-btn variant="primary">more works</b-btn>
+      </div>
+    </article>
+    <article>
       <client-only>
-        <section-marquee :items="categories" />
-        <section-marquee :items="categories" :reverse="true" />
-        <section-marquee :items="categories" />
+        <section-marquee :scrollY="scrollY" :items="categories" />
+        <section-marquee
+          :scrollY="scrollY"
+          :items="categories"
+          :reverse="true"
+        />
+        <section-marquee :scrollY="scrollY" :items="categories" />
       </client-only>
     </article>
     <article>
-      <heading-section title="product" />
+      <heading-section title="product" align="center" />
       <b-container tag="section">
         <b-row>
-          <b-col cols="12" md="4" v-for="(item, i) in products" :key="i">
+          <b-col
+            cols="12"
+            md="4"
+            class="mb-3 mb-md-0"
+            v-for="(item, i) in products"
+            :key="i"
+          >
             <a :href="item.url" class="reset" role="link" target="_blank">
               <media-image :item="item" />
             </a>
@@ -45,13 +96,22 @@ import * as THREE from "three";
 
 export default {
   layout: "Default",
+  // inject: ["scrollY", "scrollGap", "scrollHeight"],
+  props: {
+    scrollY: {
+      type: Number
+    },
+    scrollGap: {
+      type: Number
+    },
+    scrollHeight: {
+      type: Number
+    }
+  },
   data() {
     return {
       // three
       loaded: false,
-      scrollY: null,
-      scrollHeight: null,
-      gap: null,
       aboutHeight: null,
 
       // work
@@ -100,33 +160,14 @@ export default {
       this.init();
     }
   },
-  beforeMount() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.handleScroll);
-  },
   methods: {
-    handleScroll() {
-      let scrollHeight = Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight,
-        document.body.offsetHeight,
-        document.documentElement.offsetHeight,
-        document.body.clientHeight,
-        document.documentElement.clientHeight
-      );
-      this.scrollHeight = scrollHeight;
-      this.scrollY = window.scrollY;
-      this.aboutHeight = Math.round(window.innerHeight);
-      this.gap = this.scrollY - this.scrollHeight;
-    },
     init() {
+      this.aboutHeight = Math.round(window.innerHeight);
       this.loaded = true;
       const scene = new THREE.Scene();
 
       const w = window.innerWidth;
-      const h = window.innerHeight;
+      const h = this.aboutHeight;
       const camera = new THREE.PerspectiveCamera(
         // 거리, 크기,
         100,
@@ -134,7 +175,7 @@ export default {
         0.1,
         1000
       );
-      camera.position.set(0, 0, 10);
+      camera.position.set(0, 0, 20);
 
       // canvas setting
       const canvas = this.$refs.about;
@@ -153,43 +194,41 @@ export default {
         renderer.render(scene, camera);
       };
 
+      // colorOption
+      const color = { color: 0xededed };
+
       // Meshes
-      const x_material = new THREE.MeshStandardMaterial({ color: 0xededed });
+      const x_material = new THREE.MeshStandardMaterial(color);
       const x_geometry = new THREE.BoxGeometry(1.5, 12, 1);
       const x1 = new THREE.Mesh(x_geometry, x_material);
       const x2 = new THREE.Mesh(x_geometry, x_material);
       x1.rotation.z = -15;
       x2.rotation.z = 15;
 
-      x1.position.set(-14, 0, 20);
-      x2.position.set(-14, 0, 20);
+      x1.position.set(-14, 0, 35);
+      x2.position.set(-14, 0, 35);
       scene.add(x1, x2);
 
-      const r_material = new THREE.MeshStandardMaterial({ color: 0xededed });
+      const r_material = new THREE.MeshStandardMaterial(color);
       const r1 = new THREE.Mesh(new THREE.BoxGeometry(4, 1.5, 1), r_material);
       const r2 = new THREE.Mesh(new THREE.BoxGeometry(8, 1.5, 1), r_material);
       const r3 = new THREE.Mesh(new THREE.BoxGeometry(4, 1.5, 1), r_material);
-      r1.position.set(-3.5, 4, 20);
-      r2.position.set(-5.6, 0, 20);
-      r3.position.set(-7.5, -4, 20);
+      r1.position.set(-3.5, 4, 35);
+      r2.position.set(-5.6, 0, 35);
+      r3.position.set(-7.5, -4, 35);
       scene.add(r1, r2, r3);
 
-      const m_geometry = new THREE.TorusGeometry(w < 768 ? 9 : 16, 3, 10, 4);
-      const m_material = new THREE.MeshStandardMaterial({
-        color: 0xededed
-        // side: THREE.DoubleSide,
-      });
+      const m_geometry = new THREE.TorusGeometry(11.8, 3, 10, 4);
+      const m_material = new THREE.MeshStandardMaterial(color);
       const cube = new THREE.Mesh(m_geometry, m_material);
-      cube.position.set(w < 768 ? 6.3 : 10, 0.2, -5);
+      cube.position.set(7.9, -0.5, 5);
       scene.add(cube);
 
       const o_geometry = new THREE.TorusGeometry(4.5, 1, 10, 50);
-      const o_material = new THREE.MeshStandardMaterial({
-        color: 0xededed
-      });
+      const o_material = new THREE.MeshStandardMaterial(color);
       // mesh = geometry + material
       const tourus = new THREE.Mesh(o_geometry, o_material);
-      tourus.position.set(14.6, 0, 20);
+      tourus.position.set(14.6, 0, 35);
       scene.add(tourus);
 
       // 빛
@@ -221,20 +260,15 @@ export default {
       // 애니메이션 루프를 활용하여, 애니메이션 프레임대로 animate가 그려짐
       const animate = () => {
         requestAnimationFrame(animate);
-        // 렌더를 계속 해야함.
-
         x1.rotation.y += 0.03;
         x1.rotation.z += 0.03;
         x2.rotation.y += 0.03;
         x2.rotation.z += 0.03;
 
-        const y = window.scrollY;
-
-        if (y === 0) {
+        if (this.scrollY === 0) {
           cube.rotation.y += 0.03;
-          cube.rotation.x += 0.03;
+          cube.rotation.z += 0.03;
         }
-
         draw();
       };
       animate();
@@ -248,16 +282,13 @@ export default {
 
       // 스크롤 감지
       window.addEventListener("scroll", () => {
-        const w = window.screen.availWidth;
-        const y = window.scrollY;
-        camera.position.set(0, 0, w < 768 ? y * 0.0048 : y * 0.065 + 4);
-        // console.log(cube.rotation.z);
-        // if (cube.rotation.z >= 0.78) {
-        //   cube.rotation.set(0, 0, 0.78);
-        //   return;
-        // } else {
-        cube.rotation.set(0, 0, w < 768 ? y * 0.00404 : y * 0.0017);
-        // }
+        if (this.scrollY < this.aboutHeight) {
+          camera.position.set(0, 0, this.scrollY * 0.05 + 10);
+          cube.rotation.set(0, 0, this.scrollY * 0.0048);
+        }
+        if (this.scrollY >= this.aboutHeight) {
+          cube.rotation.set(0, 0, 0.79);
+        }
       });
     }
   }
@@ -266,8 +297,13 @@ export default {
 
 <style lang="scss" scoped>
 article {
-  margin: 24px 0 120px;
-  padding: 48px 0;
+  &:not(:first-child) {
+    margin: 56px 0 120px;
+    padding: 48px 0;
+    @media all and (max-width: 768px) {
+      margin-bottom: 56px;
+    }
+  }
 }
 
 .about-wrapper {
@@ -277,6 +313,7 @@ article {
   min-height: 100vh;
   background-color: transparent;
   margin: 0 -2rem;
+  position: relative;
 
   #canvas {
     top: 0;
@@ -286,6 +323,8 @@ article {
 }
 
 .mt-100vh {
-  margin-top: 100vh;
+  @media all and (min-width: 768px) {
+    margin-top: 100vh !important;
+  }
 }
 </style>

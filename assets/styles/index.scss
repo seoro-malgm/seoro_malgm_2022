@@ -17,15 +17,12 @@ html,
   overflow-x: hidden;
   &::-webkit-scrollbar,
   &::-webkit-scrollbar-track {
-    width: 8px;
+    width: 3px;
     background-color: $secondary;
   }
   &::-webkit-scrollbar-thumb {
-    width: 5px;
+    width: 3px;
     background-color: $primary;
-    border: 1px solid $secondary;
-    background-clip: padding-box;
-    border-radius: 9999px;
   }
   scroll-behavior: smooth;
 }
@@ -43,8 +40,8 @@ html,
   }
 }
 body {
-  background-color: $secondary;
-  color: $primary;
+  background-color: $primary;
+  color: $secondary;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -140,6 +137,28 @@ a {
         color: inherit;
         opacity: 1;
       }
+    }
+  }
+}
+
+.b-toaster {
+  z-index: 3000;
+  * {
+    max-width: unset;
+  }
+  header.toast-header {
+    display: none;
+  }
+  .toast-body {
+    border-radius: 0;
+    background-color: $darkest;
+    color: $secondary;
+  }
+  .b-toaster-slot {
+    min-width: 300px;
+    .b-toast {
+      width: 100%;
+      max-width: 98vw;
     }
   }
 }

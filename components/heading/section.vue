@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header :class="`text-${align}`">
     <h1>{{ title }}</h1>
     <p v-if="desc">{{ desc }}</p>
   </header>
@@ -15,6 +15,10 @@ export default {
     desc: {
       type: String,
       default: null
+    },
+    align: {
+      type: String,
+      default: "left"
     }
   }
 };
@@ -22,10 +26,9 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  margin-bottom: 24px;
+  margin-bottom: 40px;
   h1 {
-    text-align: center;
-    font-size: 36px;
+    font-size: 48px;
     text-transform: uppercase;
     margin-bottom: 4px;
     @media all and (max-width: 768px) {

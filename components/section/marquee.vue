@@ -10,7 +10,7 @@
             }
           : {},
         {
-          transform: `translateX(${scrollY * 0.03 * reversed}%)`
+          transform: `translateX(${(scrollY + 1) * 0.03 * reversed}%)`
         }
       ]"
     >
@@ -30,27 +30,14 @@ export default {
     reverse: {
       type: Boolean,
       default: false
+    },
+    scrollY: {
+      type: Number
     }
-  },
-  data() {
-    return {
-      scrollY: 0
-    };
   },
   computed: {
     reversed() {
       return this.reverse ? 0.5 : -0.5;
-    }
-  },
-  beforeMount() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.handleScroll);
-  },
-  methods: {
-    handleScroll() {
-      this.scrollY = window.scrollY + 1;
     }
   }
 };
@@ -75,7 +62,7 @@ export default {
         content: "";
         width: 20px;
         height: 20px;
-        background-color: $primary;
+        background-color: $secondary;
         border-radius: 50%;
         position: absolute;
         top: 50%;

@@ -44,6 +44,7 @@ figure {
   figcaption {
     margin: 0.5rem 0.25rem;
     text-align: center;
+    color: $secondary;
     h1 {
       font-size: 14px;
       font-weight: 700;

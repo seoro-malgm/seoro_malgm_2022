@@ -1,43 +1,42 @@
 <template>
-  <b-navbar class="navbar" :class="{ active: active }">
-    <b-navbar-brand
-      href="/"
-      class="mx-auto ml-md-0"
-      title="서로맑음"
-      role="link"
-    >
+  <b-navbar class="navbar" :class="{ active: scrollY > 10 }">
+    <b-navbar-brand href="/" class="ml-0 logo" title="서로맑음" role="link">
       <Logo />
     </b-navbar-brand>
+    <div class="ml-auto d-none d-md-flex align-items-center">
+      <nuxt-link class="nuxt-link text-reset" to="work">
+        <span>work</span>
+      </nuxt-link>
+      <b-btn
+        class="link nuxt-link text-reset"
+        href="https://marpple.shop/kr/seoro_malgm"
+        target="_blank"
+      >
+        <span>product</span>
+      </b-btn>
+      <nuxt-link class="nuxt-link text-reset" to="contact">
+        <span>contact</span>
+      </nuxt-link>
+    </div>
   </b-navbar>
 </template>
 
 <script>
 export default {
   name: "global-nav",
+  props: {
+    scrollY: {
+      type: Number,
+      default: null
+    }
+  },
+
   data() {
     return {
       links: {
         contact: "cantact"
-      },
-      scrollY: 0,
-      active: false
-    };
-  },
-  methods: {
-    handleScroll() {
-      this.scrollY = window.scrollY;
-      if (scrollY > 10) {
-        this.active = true;
-      } else {
-        this.active = false;
       }
-    }
-  },
-  beforeMount() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.handleScroll);
+    };
   }
 };
 </script>
@@ -45,6 +44,50 @@ export default {
 <style lang="scss" scoped>
 .navbar {
   position: fixed;
-  z-index: 2000;
+  z-index: 2100;
+  width: 100%;
+
+  .logo {
+    transform: scale(1);
+    transition: 0.3s;
+  }
+  @media all and (max-width: 768px) {
+    width: inherit;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s $ease-in-out;
+    .logo {
+      transform: scale(1.8);
+    }
+  }
+  &.active {
+    @media all and (max-width: 768px) {
+      left: 2vw;
+      top: 2vw;
+      transform: translate(0, 0);
+    }
+    .logo {
+      transform: scale(0.7) translate(-3rem, -0.2rem);
+    }
+  }
+
+  .nuxt-link {
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: $primary;
+    border-color: $primary;
+    border-radius: 0;
+    padding: 0 2px;
+    &:not(:first-child) {
+      margin-left: 1rem;
+    }
+    &:hover,
+    &:active {
+      color: $secondary;
+    }
+    color: $secondary;
+    mix-blend-mode: exclusion;
+  }
 }
 </style>
