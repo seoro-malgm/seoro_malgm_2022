@@ -1,0 +1,11 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /works/{work} {
+      allow get: if true;
+      allow read: if true;
+    }
+    match /works/{work} {
+      allow create, update, delete: if request.auth != null;
+    }
+  }
+}

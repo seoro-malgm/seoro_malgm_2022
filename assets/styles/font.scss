@@ -4,6 +4,7 @@
     format("woff");
   font-weight: 200;
   font-style: normal;
+  letter-spacing: -0.3px;
 }
 
 @font-face {
@@ -12,6 +13,7 @@
     format("woff");
   font-weight: 400;
   font-style: normal;
+  letter-spacing: -0.3px;
 }
 
 @font-face {
@@ -20,9 +22,18 @@
     format("woff");
   font-weight: 700;
   font-style: normal;
+  letter-spacing: -0.3px;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Vollkorn&display=swap");
+@font-face {
+  font-family: "Vollkorn";
+  src: url("https://fonts.googleapis.com/css2?family=Vollkorn&display=swap");
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.5px;
+}
+
+// @import url("https://fonts.googleapis.com/css2?family=Vollkorn&display=swap");
 
 h1,
 h2,
@@ -41,9 +52,9 @@ input[type="password"] {
   font-family: "Pretendard-Regular", sans-serif;
 }
 
-.text-vollkorn {
-  font-family: "Vollkorn", serif;
-}
+// . {
+//   font-family: "Vollkorn", serif;
+// }
 
 @for $var from 2 through 9 {
   .fw-#{$var}#{"00"} {
@@ -100,7 +111,9 @@ $font-md-size: (
   36,
   40,
   52,
-  63
+  63,
+  100,
+  150
 );
 
 @media print {

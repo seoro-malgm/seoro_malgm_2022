@@ -1,5 +1,7 @@
 <template>
-  <div>work {{ id }}</div>
+  <div class="">
+    works
+  </div>
 </template>
 
 <script>

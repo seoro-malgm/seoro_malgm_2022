@@ -13,7 +13,9 @@
         />
       </b-container>
     </div>
-    <global-footer ref="footer" :active="footerShown" />
+    <div class="pt-5">
+      <global-footer ref="footer" :active="footerShown" />
+    </div>
   </div>
 </template>
 

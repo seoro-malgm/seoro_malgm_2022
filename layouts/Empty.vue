@@ -5,7 +5,10 @@
     </header>
     <div id="wrapper">
       <b-container fluid tag="main" id="main">
-        <nuxt-child :id="id" />
+        <nuxt-child />
+        <div class="p-5 text-center">
+          현재 사이트 준비중입니다...
+        </div>
       </b-container>
     </div>
     <!-- <global-footer /> -->
@@ -15,9 +18,7 @@
 <script>
 export default {
   data() {
-    return {
-      id: "fjasjdjsad"
-    };
+    return {};
   }
 };
 </script>

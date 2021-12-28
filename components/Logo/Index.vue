@@ -1,7 +1,7 @@
 <template>
   <div role="navigation">
     <div v-show="isLoaded">
-      <canvas ref="logo" height="48" />
+      <canvas ref="logo" height="56" />
     </div>
     <!-- <div
       class="text-primary h-100 d-flex flex-column justify-content-center align-items-center"
@@ -48,8 +48,8 @@ export default {
       const scene = new THREE.Scene();
 
       // scene
-      const w = 188;
-      const h = 48;
+      const w = 156;
+      const h = 56;
       const camera = new THREE.PerspectiveCamera(
         // 거리, 크기,
         75,
@@ -57,7 +57,7 @@ export default {
         1,
         1000
       );
-      camera.position.set(0, 0, 8);
+      camera.position.set(0, 0, 13);
 
       // canvas
       const canvas = this.$refs.logo;

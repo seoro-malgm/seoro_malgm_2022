@@ -1,15 +1,15 @@
 <template>
   <section id="index">
     <article>
-      <div class="about-wrapper">
+      <div class="intro-wrapper">
         <canvas
           id="canvas"
-          ref="about"
+          ref="intro"
           :class="
-            scrollY < aboutHeight ? 'position-fixed' : 'position-absolute'
+            scrollY < introHeight ? 'position-fixed' : 'position-absolute'
           "
           class="d-none d-md-block"
-          :style="scrollY < aboutHeight ? {} : { top: `${aboutHeight}px` }"
+          :style="scrollY < introHeight ? {} : { top: `${introHeight}px` }"
         />
         <h2
           class="d-block d-md-none text-14 w-100 text-center position-absolute text-uppercase"
@@ -20,44 +20,59 @@
       </div>
     </article>
 
-    <article class="mt-100vh">
-      <div class="text-center text-vollkorn text-80">
-        CROSS, ROAD, RESULT, POINT
-      </div>
-      <b-row align-h="center">
-        <b-col cols="12" md="7">
-          <p class="mt-3 text-center">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum
-            reprehenderit aut, alias delectus esse enim et iusto magnam, earum
-            similique eligendi reiciendis aperiam praesentium cupiditate quam
-            voluptate facere maxime recusandae. Lorem ipsum dolor sit amet
-            consectetur, adipisicing elit. Dolorum reprehenderit aut, alias
-            delectus esse enim et iusto magnam, earum similique eligendi
-            reiciendis aperiam praesentium cupiditate quam voluptate facere
-            maxime recusandae.Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Dolorum reprehenderit aut, alias delectus esse
-            enim et iusto magnam, earum similique eligendi reiciendis aperiam
-            praesentium cupiditate quam voluptate facere maxime recusandae.
+    <article class="mt-100vh about-wrapper">
+      <b-container fluid>
+        <b-row tag="header" class="about-header mx-0" align-h="center">
+          <b-col
+            cols="6"
+            md="3"
+            v-for="(item, i) in aboutItems"
+            class="p-0"
+            :key="i"
+          >
+            <logo-letter :item="item" :value="aboutKey" />
+          </b-col>
+        </b-row>
+      </b-container>
+
+      <b-row align-h="end">
+        <b-col cols="11" md="5">
+          <p class="mt-md-3 pt-5 lh-200 text-18 text-md-40">
+            서로맑음 스튜디오
+            <span class=" mx-n1 text-12 text-md-18">(Seoro-malgm studio)</span>
+            는 <br />
+            클라이언트, 유저, 협력자와 <br />
+            <strong>교차</strong>하는 <strong>과정</strong>을 통해 <br />
+            <strong>강점</strong>을 부각한 <strong>결과</strong>를 만듭니다
           </p>
         </b-col>
       </b-row>
     </article>
-    <article class="min-vh-100 p-5 bg-secondary text-primary">
-      <heading-section title="Current Works" />
-      <b-row v-for="(item, i) in 3" :key="i" class="mb-4">
-        <b-col>
-          <div class="bg-img ratio-67 bg-darkest"></div>
-        </b-col>
-        <b-col>
-          <div class="bg-img ratio-67 bg-darkest"></div>
-        </b-col>
-        <b-col>
-          <div class="bg-img ratio-67 bg-darkest"></div>
-        </b-col>
-      </b-row>
-      <div class="text-center">
-        <b-btn variant="primary">more works</b-btn>
-      </div>
+
+    <article class="min-vh-100">
+      <b-container fluid>
+        <heading-section title="Current Works" />
+        <template v-if="works && works.length">
+          <b-row align-h="center">
+            <b-col
+              cols="12"
+              md="6"
+              class="mb-4"
+              v-for="(item, i) in works"
+              :key="i"
+            >
+              <media-tv :item="item" />
+            </b-col>
+          </b-row>
+
+          <div class="text-center mt-4">
+            <b-btn variant="primary text-24 text-md-32">MORE WORKS &gt;</b-btn>
+          </div>
+        </template>
+        <template v-else>
+          <loading />
+        </template>
+      </b-container>
     </article>
     <article>
       <client-only>
@@ -93,6 +108,7 @@
 
 <script>
 import * as THREE from "three";
+import { db, allWorks } from "~/plugins/firebase.js";
 
 export default {
   layout: "Default",
@@ -108,11 +124,52 @@ export default {
       type: Number
     }
   },
+  async asyncData() {
+    const works = await allWorks();
+    works.splice(4);
+    return {
+      works
+    };
+  },
   data() {
     return {
+      // intro
       // three
       loaded: false,
-      aboutHeight: null,
+      introHeight: null,
+
+      // about
+      aboutKey: "en",
+      aboutItems: [
+        {
+          ko: "서",
+          en: "SEO",
+          meanKo: "교차",
+          meanEn: "Cross",
+          image: require("@/assets/images/logo/seo.png")
+        },
+        {
+          ko: "로",
+          en: "RO",
+          meanKo: "과정",
+          meanEn: "Road",
+          image: require("@/assets/images/logo/ro.png")
+        },
+        {
+          ko: "맑",
+          en: "MAL",
+          meanKo: "결과",
+          meanEn: "Result",
+          image: require("@/assets/images/logo/mal.png")
+        },
+        {
+          ko: "음",
+          en: "GM",
+          meanKo: "강점",
+          meanEn: "Point",
+          image: require("@/assets/images/logo/gm.png")
+        }
+      ],
 
       // work
       categories: [
@@ -155,19 +212,23 @@ export default {
     };
   },
   async mounted() {
+    // intro
     const loaded = await THREE;
     if (loaded) {
       this.init();
     }
+
+    // about
+    this.aboutKeyToggler();
   },
   methods: {
     init() {
-      this.aboutHeight = Math.round(window.innerHeight);
+      this.introHeight = Math.round(window.innerHeight);
       this.loaded = true;
       const scene = new THREE.Scene();
 
       const w = window.innerWidth;
-      const h = this.aboutHeight;
+      const h = this.introHeight;
       const camera = new THREE.PerspectiveCamera(
         // 거리, 크기,
         100,
@@ -178,7 +239,7 @@ export default {
       camera.position.set(0, 0, 20);
 
       // canvas setting
-      const canvas = this.$refs.about;
+      const canvas = this.$refs.intro;
 
       // THREE renderer
       const renderer = new THREE.WebGLRenderer({
@@ -282,14 +343,23 @@ export default {
 
       // 스크롤 감지
       window.addEventListener("scroll", () => {
-        if (this.scrollY < this.aboutHeight) {
+        if (this.scrollY <= this.introHeight) {
           camera.position.set(0, 0, this.scrollY * 0.05 + 10);
           cube.rotation.set(0, 0, this.scrollY * 0.0048);
         }
-        if (this.scrollY >= this.aboutHeight) {
+        if (this.scrollY >= this.introHeight) {
+          camera.position.set(0, 0, this.introHeight * 0.05 + 10);
           cube.rotation.set(0, 0, 0.79);
         }
       });
+    },
+    aboutKeyToggler() {
+      const keys = ["ko", "en", "meanKo", "meanEn", "image"];
+
+      setInterval(() => {
+        const num = Math.round(Math.random() * (keys.length - 1));
+        this.aboutKey = keys[num];
+      }, 2500);
     }
   }
 };
@@ -298,7 +368,7 @@ export default {
 <style lang="scss" scoped>
 article {
   &:not(:first-child) {
-    margin: 56px 0 120px;
+    margin: 72px 0 120px;
     padding: 48px 0;
     @media all and (max-width: 768px) {
       margin-bottom: 56px;
@@ -306,7 +376,8 @@ article {
   }
 }
 
-.about-wrapper {
+// intro
+.intro-wrapper {
   width: 100%;
   height: 100%;
   min-width: 100vw;
@@ -322,6 +393,14 @@ article {
   }
 }
 
+// about
+.about-wrapper {
+  .about-header {
+    text-align: center;
+  }
+}
+
+// custom margin
 .mt-100vh {
   @media all and (min-width: 768px) {
     margin-top: 100vh !important;

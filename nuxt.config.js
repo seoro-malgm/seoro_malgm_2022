@@ -133,7 +133,8 @@ export default {
   ],
 
   plugins: [
-    { src: "@/plugins/common.js" }
+    { src: "@/plugins/common.js" },
+    { src: "@/plugins/firebase.js" }
     // { src: "@/plugins/three.js", ssr: false }
   ],
 
@@ -152,6 +153,10 @@ export default {
   bootstrapVue: {
     // bootstrapCSS: false,
     // bootstrapVueCSS: false
+  },
+
+  generate: {
+    dir: "dist"
   },
 
   axios: {}

@@ -1,5 +1,5 @@
 <template>
-  <section class="marquee mx-n5 py-1 py-md-3">
+  <section class="marquee mx-n5 py-1">
     <ul
       class="list"
       :style="[
@@ -14,7 +14,7 @@
         }
       ]"
     >
-      <li v-for="(item, i) in items" :key="i">
+      <li v-for="(item, i) in items" :key="`a-` + i">
         {{ item }}
       </li>
     </ul>
@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     reversed() {
-      return this.reverse ? 0.5 : -0.5;
+      return this.reverse ? 0.3 : -0.3;
     }
   }
 };
@@ -51,7 +51,7 @@ export default {
     li {
       font-size: 96px;
       margin: 0 2rem;
-      font-family: "Vollkorn", serif;
+      // font-family: "Vollkorn", serif;
       position: relative;
       @media all and (max-width: 768px) {
         font-size: 36px;

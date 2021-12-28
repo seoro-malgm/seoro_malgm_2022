@@ -68,7 +68,7 @@ export default {
       transform: translate(0, 0);
     }
     .logo {
-      transform: scale(0.7) translate(-3rem, -0.2rem);
+      transform: scale(0.7) translateX(-2rem);
     }
   }
 
@@ -79,15 +79,26 @@ export default {
     border-color: $primary;
     border-radius: 0;
     padding: 0 2px;
+    opacity: 0.7;
     &:not(:first-child) {
       margin-left: 1rem;
     }
     &:hover,
-    &:active {
+    &:active,
+    &.active,
+    &:visited {
+      background-color: $primary;
+      border-color: $primary;
       color: $secondary;
+      opacity: 1;
     }
     color: $secondary;
-    mix-blend-mode: exclusion;
+    &.nuxt-link-active {
+      background-color: $secondary;
+      border-color: $secondary;
+      color: $primary !important;
+      opacity: 1;
+    }
   }
 }
 </style>
