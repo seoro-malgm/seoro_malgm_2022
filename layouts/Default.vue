@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <global-nav :scrollY="scrollY" />
+      <global-nav :scrollY="scrollY" @menu-toggle="menuToggle" />
     </header>
     <div id="wrapper" :class="{ 'footer-shown': footerShown }">
       <div class="dim" :style="footerShown ? { pointerEvents: 'auto' } : {}" />
@@ -53,6 +53,11 @@ export default {
       const footerHeight = this.$refs.footer.$el.offsetHeight;
       this.footerShown =
         this.scrollGap <= window.innerHeight + footerHeight / 2;
+    },
+    menuToggle() {
+      console.log("------------------------------------");
+      console.log("asd");
+      console.log("------------------------------------");
     }
   }
 };
@@ -63,6 +68,9 @@ export default {
   min-height: 100vh;
   overflow-x: hidden;
   padding: 0 2rem 0;
+  @media all and (max-width: 768px) {
+    padding: 0 2vw 0;
+  }
 }
 #wrapper {
   padding-bottom: 2rem;

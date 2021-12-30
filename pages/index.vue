@@ -60,11 +60,11 @@
       <b-container fluid>
         <heading-section title="Current Works" />
         <template v-if="works && works.length">
-          <b-row align-h="center">
+          <b-row align-h="center" class="mx-n3">
             <b-col
               cols="12"
               md="6"
-              class="mb-4"
+              class="mb-4 px-2"
               v-for="(item, i) in works"
               :key="i"
             >
@@ -317,7 +317,7 @@ export default {
       const o_material = new THREE.MeshStandardMaterial(color);
       // mesh = geometry + material
       const tourus = new THREE.Mesh(o_geometry, o_material);
-      tourus.position.set(14.6, 0, 35);
+      tourus.position.set(15, 0, 35);
       scene.add(tourus);
 
       // 빛
@@ -417,7 +417,8 @@ article {
   min-width: 100vw;
   min-height: 100vh;
   background-color: transparent;
-  margin: 0 -2rem;
+  // margin: 0 -2rem;
+  margin: 0;
   position: relative;
 
   #canvas {

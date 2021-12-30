@@ -45,9 +45,9 @@
       <b-col cols="12" md="10" tag="section">
         <b-row class="mx-n1">
           <b-col
-            cols="6"
+            cols="12"
             md="4"
-            class="mb-5 px-1"
+            class="mb-3 mb-md-5 px-1"
             v-for="(item, i) in works"
             :key="i"
             tag="article"
@@ -77,6 +77,11 @@ export default {
     return {
       items,
       categories
+    };
+  },
+  head() {
+    return {
+      title: `서로맑음 | WORK`
     };
   },
   data() {

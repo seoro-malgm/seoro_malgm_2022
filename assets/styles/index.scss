@@ -200,4 +200,22 @@ a {
       }
     }
   }
+  @media all and (max-width: 768px) {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    padding-bottom: 0.5rem;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    label.category {
+      margin-bottom: 0;
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+      span.category-text {
+        font-size: 20px;
+      }
+    }
+  }
 }

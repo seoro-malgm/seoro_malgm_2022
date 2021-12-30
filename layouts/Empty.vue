@@ -23,5 +23,8 @@ export default {
 <style lang="scss" scoped>
 #main {
   padding: 96px 2rem 0;
+  @media all and (max-width: 768px) {
+    padding: 96px 2vw 0;
+  }
 }
 </style>

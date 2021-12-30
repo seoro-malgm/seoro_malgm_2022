@@ -1,7 +1,12 @@
 <template>
-  <b-container fluid class="pb-5">
+  <b-container fluid class="pt-4 pb-5">
     <template v-if="currentWork">
-      <header class="mb-3">
+      <header class="mb-5">
+        <b-btn
+          variant="text mb-3 p-0 text-secondary d-block d-md-none"
+          to="/work"
+          >GO BACK</b-btn
+        >
         <h1>
           {{ currentWork.title }}
         </h1>
@@ -41,9 +46,13 @@ export default {
   },
   head() {
     return {
-      title: this.currentWork.title,
+      title: `서로맑음 | ${this.currentWork.title}`,
       meta: [
-        { hid: "title", property: "title", content: this.currentWork.title },
+        {
+          hid: "title",
+          property: "title",
+          content: `서로맑음 | ${this.currentWork.title}`
+        },
         {
           hid: "description",
           property: "description",

@@ -1,7 +1,18 @@
 <template>
-  <b-container fluid class="navbar-wrapper" :class="{ active: scrollY > 10 }">
+  <b-container
+    fluid
+    class="navbar-wrapper"
+    :class="{
+      active: ($route.path === '/' && scrollY > 10) || $route.path !== '/'
+    }"
+  >
     <b-navbar>
-      <b-navbar-brand href="/" class="ml-0 logo" title="서로맑음" role="link">
+      <b-navbar-brand
+        href="/"
+        class="ml-0 my-0 logo p-0"
+        title="서로맑음"
+        role="link"
+      >
         <Logo />
       </b-navbar-brand>
       <div class="ml-auto d-none d-md-flex align-items-center">
@@ -19,6 +30,11 @@
           <span>contact</span>
         </nuxt-link>
       </div>
+      <div class="ml-auto d-block d-md-none">
+        <b-btn variant="text p-0 text-secondary" @click="$emit('menu-toggle')">
+          MENU
+        </b-btn>
+      </div>
     </b-navbar>
   </b-container>
 </template>
@@ -32,7 +48,6 @@ export default {
       default: null
     }
   },
-
   data() {
     return {
       links: {
@@ -48,28 +63,20 @@ export default {
   position: fixed;
   z-index: 2100;
   width: 100%;
+  padding-right: 2rem;
+  @media all and (max-width: 768px) {
+    padding: 1rem 1rem 0 0;
+  }
+  .navbar {
+    padding: 0;
+  }
   .logo {
-    transform: scale(1);
+    transform: scale(1) translateX(0);
     transition: 0.3s;
   }
-  @media all and (max-width: 768px) {
-    width: inherit;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    transition: 0.3s $ease-in-out;
-    .logo {
-      transform: scale(1.8);
-    }
-  }
   &.active {
-    @media all and (max-width: 768px) {
-      left: 2vw;
-      top: 2vw;
-      transform: translate(0, 0);
-    }
     .logo {
-      transform: scale(0.7) translateX(-3rem);
+      transform: scale(0.7) translateX(-1rem);
     }
   }
 

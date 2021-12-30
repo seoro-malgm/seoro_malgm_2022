@@ -21,7 +21,8 @@ export default {
       },
       {
         property: "og:image",
-        content: "~/assets/images/og-image.png"
+        content:
+          "https://firebasestorage.googleapis.com/v0/b/seoro-malgm.appspot.com/o/og-image.png?alt=media&token=4cc2eadb-9332-45d2-a4d3-fd5212503676"
       },
       {
         property: "og:title",
