@@ -62,11 +62,8 @@ export default {
 #main {
   min-height: 100vh;
   overflow-x: hidden;
-}
-#main {
   padding: 0 2rem 0;
 }
-
 #wrapper {
   padding-bottom: 2rem;
   transition: all 0.4s $ease-in-out;

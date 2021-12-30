@@ -1,9 +1,15 @@
 <template>
   <div class="logo-letter">
-    <figure v-show="value === 'image'">
-      <img :src="item.image" :alt="item.meanKo" class="w-50" />
-    </figure>
-    <div class="letter" v-show="value !== 'image'">
+    <img
+      :src="item.image"
+      :alt="item.meanKo"
+      :style="{
+        transform: `translate(${mousePosition.x / 100 -
+          50}%, ${mousePosition.y / 200 - 50}%)`,
+        transition: `transform 0.3s ease-out`
+      }"
+    />
+    <div class="letter">
       <h1 v-show="value === 'ko'" class="text-56 text-md-150">
         {{ item.ko }}
       </h1>
@@ -35,6 +41,14 @@ export default {
     },
     value: {
       type: String
+    },
+    index: {
+      type: Number,
+      default: 0
+    },
+    mousePosition: {
+      type: Object,
+      default: { x: 0, y: 0 }
     }
   }
 };
@@ -44,17 +58,27 @@ export default {
 .logo-letter {
   position: relative;
   padding-bottom: 100%;
-  figure,
+
+  img,
   .letter {
     position: absolute;
     width: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  img {
+    width: 50%;
+    @media all and (max-width: 768px) {
+      width: 75%;
+    }
+    opacity: 0.75;
   }
 
   .letter h1 {
     font-size: 80px;
+    text-shadow: 0 0 30px rgba($color: $darkest, $alpha: 0.7);
     @media all and (max-width: 768px) {
       font-size: 36px;
     }

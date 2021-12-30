@@ -1,24 +1,26 @@
 <template>
-  <b-navbar class="navbar" :class="{ active: scrollY > 10 }">
-    <b-navbar-brand href="/" class="ml-0 logo" title="서로맑음" role="link">
-      <Logo />
-    </b-navbar-brand>
-    <div class="ml-auto d-none d-md-flex align-items-center">
-      <nuxt-link class="nuxt-link text-reset" to="work">
-        <span>work</span>
-      </nuxt-link>
-      <b-btn
-        class="link nuxt-link text-reset"
-        href="https://marpple.shop/kr/seoro_malgm"
-        target="_blank"
-      >
-        <span>product</span>
-      </b-btn>
-      <nuxt-link class="nuxt-link text-reset" to="contact">
-        <span>contact</span>
-      </nuxt-link>
-    </div>
-  </b-navbar>
+  <b-container fluid class="navbar-wrapper" :class="{ active: scrollY > 10 }">
+    <b-navbar>
+      <b-navbar-brand href="/" class="ml-0 logo" title="서로맑음" role="link">
+        <Logo />
+      </b-navbar-brand>
+      <div class="ml-auto d-none d-md-flex align-items-center">
+        <nuxt-link class="nuxt-link text-reset" to="/work">
+          <span>work</span>
+        </nuxt-link>
+        <b-btn
+          class="link nuxt-link text-reset"
+          href="https://marpple.shop/kr/seoro_malgm"
+          target="_blank"
+        >
+          <span>product</span>
+        </b-btn>
+        <nuxt-link class="nuxt-link text-reset" to="/contact">
+          <span>contact</span>
+        </nuxt-link>
+      </div>
+    </b-navbar>
+  </b-container>
 </template>
 
 <script>
@@ -42,11 +44,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.navbar {
+.navbar-wrapper {
   position: fixed;
   z-index: 2100;
   width: 100%;
-
   .logo {
     transform: scale(1);
     transition: 0.3s;
@@ -68,7 +69,7 @@ export default {
       transform: translate(0, 0);
     }
     .logo {
-      transform: scale(0.7) translateX(-2rem);
+      transform: scale(0.7) translateX(-3rem);
     }
   }
 

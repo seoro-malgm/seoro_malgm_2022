@@ -1,9 +1,9 @@
 <template>
   <figure>
     <div class="wrapper">
-      <img :src="item.src" alt="..." />
+      <img :src="item.src || item.thumbnailURL" alt="..." />
     </div>
-    <figcaption>
+    <figcaption v-if="!hideCaption">
       <h1 v-if="item.title">
         {{ item.title }}
       </h1>
@@ -24,6 +24,10 @@ export default {
         title: null,
         desc: null
       }
+    },
+    hideCaption: {
+      type: Boolean,
+      default: false
     }
   }
 };

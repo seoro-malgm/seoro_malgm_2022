@@ -1,11 +1,7 @@
 <template>
   <footer id="footer" :class="{ active: active }">
+    <header class="footer-header"></header>
     <div class="footer-wrapper">
-      <header class="footer-header">
-        <div class="dot dot-red" />
-        <div class="dot dot-yellow" />
-        <div class="dot dot-green" />
-      </header>
       <h1 class="text-18 text-md-28 mt-3 mb-4 mb-md-3">CONTACT</h1>
       <p class="mb-3">
         프로젝트 문의와 채용, 기타 문의 등 모두 메일로 받고 있습니다. <br />
@@ -104,34 +100,10 @@ export default {
   .footer-wrapper {
     overflow: hidden;
     position: relative;
-    .footer-header {
-      display: flex;
-      position: absolute;
-      top: 0;
-      left: 0;
-      padding: 0.75rem 2.5rem;
-      background-color: $darkest;
-      width: 100%;
-      .dot {
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        margin-right: 0.5rem;
-        &.dot-red {
-          background-color: #ed6a5e;
-        }
-        &.dot-yellow {
-          background-color: #f5bd50;
-        }
-        &.dot-green {
-          background-color: #62c454;
-        }
-      }
-    }
     transition: all 0.4s $ease-in-out;
     width: 100%;
     margin-top: 0.875rem;
-    padding: 2.5rem;
+    padding: 1rem 2rem 2rem;
     border-radius: 0;
     background-color: $secondary;
     * {

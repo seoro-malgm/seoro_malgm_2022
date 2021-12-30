@@ -30,20 +30,27 @@
             class="p-0"
             :key="i"
           >
-            <logo-letter :item="item" :value="aboutKey" />
+            <logo-letter
+              :item="item"
+              :value="aboutKey"
+              :mousePosition="mousePosition"
+              :index="i"
+            />
           </b-col>
         </b-row>
       </b-container>
 
       <b-row align-h="end">
         <b-col cols="11" md="5">
-          <p class="mt-md-3 pt-5 lh-200 text-18 text-md-40">
-            서로맑음 스튜디오
-            <span class=" mx-n1 text-12 text-md-18">(Seoro-malgm studio)</span>
-            는 <br />
+          <p class="about-desc mt-md-3 pt-5 lh-200 text-18 text-md-40">
+            <strong>서로맑음</strong>
+            <span class=" mx-n1 text-12 text-md-18">(Seoro-malgm)</span>
+            은 <br />
             클라이언트, 유저, 협력자와 <br />
-            <strong>교차</strong>하는 <strong>과정</strong>을 통해 <br />
-            <strong>강점</strong>을 부각한 <strong>결과</strong>를 만듭니다
+            <strong class="strong">교차</strong>하는
+            <strong class="strong">과정</strong>을 통해 <br />
+            <strong class="strong">강점</strong>을 부각한
+            <strong class="strong">결과</strong>를 만듭니다.
           </p>
         </b-col>
       </b-row>
@@ -61,12 +68,19 @@
               v-for="(item, i) in works"
               :key="i"
             >
-              <media-tv :item="item" />
+              <b-btn
+                variant="link reset w-100 p-0 border-0"
+                role="link"
+                @click="$router.push(`/work/${item.no}`)"
+              >
+                <media-large :item="item" />
+              </b-btn>
             </b-col>
           </b-row>
-
-          <div class="text-center mt-4">
-            <b-btn variant="primary text-24 text-md-32">MORE WORKS &gt;</b-btn>
+          <div class="text-center mt-5">
+            <b-btn variant="primary text-24 text-md-32" to="/work"
+              >MORE WORKS &gt;</b-btn
+            >
           </div>
         </template>
         <template v-else>
@@ -138,6 +152,11 @@ export default {
       loaded: false,
       introHeight: null,
 
+      // mouse X, Y
+      mousePosition: {
+        x: null,
+        y: null
+      },
       // about
       aboutKey: "en",
       aboutItems: [
@@ -220,6 +239,14 @@ export default {
 
     // about
     this.aboutKeyToggler();
+  },
+  beforeMount() {
+    // onmousemove
+    window.addEventListener("mousemove", this.handlemMousemove);
+  },
+  beforeDestroy() {
+    // onmousemove
+    window.removeEventListener("mousemove", this.handlemMousemove);
   },
   methods: {
     init() {
@@ -354,12 +381,18 @@ export default {
       });
     },
     aboutKeyToggler() {
-      const keys = ["ko", "en", "meanKo", "meanEn", "image"];
+      const keys = ["ko", "en", "meanKo", "meanEn"];
 
       setInterval(() => {
         const num = Math.round(Math.random() * (keys.length - 1));
         this.aboutKey = keys[num];
-      }, 2500);
+      }, 1800);
+    },
+    handlemMousemove(e) {
+      this.mousePosition = {
+        x: e.pageX,
+        y: e.pageY
+      };
     }
   }
 };
@@ -395,8 +428,21 @@ article {
 
 // about
 .about-wrapper {
-  .about-header {
-    text-align: center;
+  p.about-desc {
+    .strong {
+      display: inline-block;
+      position: relative;
+      &::after {
+        display: block;
+        content: "";
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $secondary;
+      }
+    }
   }
 }
 

@@ -6,9 +6,6 @@
     <div id="wrapper">
       <b-container fluid tag="main" id="main">
         <nuxt-child />
-        <div class="p-5 text-center">
-          현재 사이트 준비중입니다...
-        </div>
       </b-container>
     </div>
     <!-- <global-footer /> -->
@@ -24,7 +21,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#wrapper {
-  margin-top: 82px;
+#main {
+  padding: 96px 2rem 0;
 }
 </style>

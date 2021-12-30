@@ -159,5 +159,8 @@ export default {
     dir: "dist"
   },
 
-  axios: {}
+  axios: {},
+  loading: {
+    color: "#ededed"
+  }
 };

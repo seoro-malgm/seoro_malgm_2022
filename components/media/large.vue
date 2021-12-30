@@ -14,7 +14,8 @@ export default {
       type: Object,
       default: null
     }
-  }
+  },
+  methods: {}
 };
 </script>
 

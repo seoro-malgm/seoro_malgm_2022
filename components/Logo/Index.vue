@@ -108,7 +108,7 @@ export default {
       const o_geometry = new THREE.TorusGeometry(4.5, 1, 10, 50);
       const o_material = new THREE.MeshStandardMaterial(option);
       const tourus = new THREE.Mesh(o_geometry, o_material);
-      tourus.position.set(15.7, 0, 0);
+      tourus.position.set(14.6, 0, 0);
       scene.add(tourus);
 
       // light

@@ -32,6 +32,7 @@ const allWorks = async () => {
     const snapshot = await getDocs(col);
     if (snapshot) {
       const works = snapshot.docs.map(doc => doc.data());
+
       return works.sort((a, b) => {
         return b.createdAt - a.createdAt;
       });
