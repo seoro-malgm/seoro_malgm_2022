@@ -17,11 +17,11 @@ export default {
       },
       {
         name: "keyword",
-        content: "ticket, 티켓,더티켓"
+        content: "디자이너 서로맑음 이상준"
       },
       {
         property: "og:image",
-        content: "/og-image.png"
+        content: "~/assets/images/og-image.png"
       },
       {
         property: "og:title",

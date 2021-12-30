@@ -73,7 +73,8 @@
                 role="link"
                 @click="$router.push(`/work/${item.no}`)"
               >
-                <media-large :item="item" />
+                <media-image :item="item" :hideCaption="true" />
+                <!-- <media-large :item="item" /> -->
               </b-btn>
             </b-col>
           </b-row>

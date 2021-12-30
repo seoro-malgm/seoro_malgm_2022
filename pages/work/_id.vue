@@ -38,6 +38,29 @@ export default {
       works,
       currentWork
     };
+  },
+  head() {
+    return {
+      title: this.currentWork.title,
+      meta: [
+        { hid: "title", property: "title", content: this.currentWork.title },
+        {
+          hid: "description",
+          property: "description",
+          content: this.currentWork.txt
+        },
+        {
+          hid: "og:image",
+          property: "og:image",
+          content: this.currentWork.thumbnailURL
+        },
+        {
+          hid: "og:description",
+          property: "og:description",
+          content: this.currentWork.txt
+        }
+      ]
+    };
   }
 };
 </script>

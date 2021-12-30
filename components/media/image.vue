@@ -1,7 +1,7 @@
 <template>
   <figure>
     <div class="wrapper">
-      <img :src="item.src || item.thumbnailURL" alt="..." />
+      <img :src="item.src || item.thumbnailURL" :alt="item.title" />
     </div>
     <figcaption v-if="!hideCaption">
       <h1 v-if="item.title">
@@ -35,14 +35,20 @@ export default {
 
 <style lang="scss" scoped>
 figure {
-  object-fit: cover;
+  object-fit: contain;
   width: 100;
   .wrapper {
     width: 100%;
     overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
     img {
       width: 100%;
-      height: auto;
+      height: max-content;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
   figcaption {
@@ -64,7 +70,7 @@ figure {
   &:focus {
     .wrapper {
       img {
-        transform: scale(1.05);
+        transform: translate(-50%, -50%) scale(1.1);
         transition: all 0.5s $ease-in-out;
       }
     }

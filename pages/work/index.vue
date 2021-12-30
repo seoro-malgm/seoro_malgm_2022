@@ -43,11 +43,11 @@
         </form>
       </b-col>
       <b-col cols="12" md="10" tag="section">
-        <b-row>
+        <b-row class="mx-n1">
           <b-col
             cols="6"
             md="4"
-            class="mb-5"
+            class="mb-5 px-1"
             v-for="(item, i) in works"
             :key="i"
             tag="article"
