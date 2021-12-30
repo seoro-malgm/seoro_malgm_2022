@@ -55,9 +55,7 @@ export default {
         this.scrollGap <= window.innerHeight + footerHeight / 2;
     },
     menuToggle() {
-      console.log("------------------------------------");
       console.log("asd");
-      console.log("------------------------------------");
     }
   }
 };

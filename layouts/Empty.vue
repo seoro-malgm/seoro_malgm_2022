@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <global-nav />
+      <global-nav @menu-toggle="menuToggle" />
     </header>
     <div id="wrapper">
       <b-container fluid tag="main" id="main">
@@ -16,6 +16,11 @@
 export default {
   data() {
     return {};
+  },
+  methods: {
+    menuToggle() {
+      console.log("asd");
+    }
   }
 };
 </script>
