@@ -15,7 +15,7 @@
       >
         <Logo />
       </b-navbar-brand>
-      <div class="ml-auto d-none d-md-flex align-items-center">
+      <div class="ml-auto d-flex align-items-center">
         <nuxt-link class="nuxt-link text-reset" to="/work">
           <span>work</span>
         </nuxt-link>
@@ -26,15 +26,15 @@
         >
           <span>product</span>
         </b-btn>
-        <nuxt-link class="nuxt-link text-reset" to="/contact">
+        <!-- <nuxt-link class="nuxt-link text-reset" to="/contact">
           <span>contact</span>
-        </nuxt-link>
+        </nuxt-link> -->
       </div>
-      <div class="ml-auto d-block d-md-none">
+      <!-- <div class="ml-auto d-block d-md-none">
         <b-btn variant="text p-0 text-secondary" @click="$emit('menu-toggle')">
           MENU
         </b-btn>
-      </div>
+      </div> -->
     </b-navbar>
   </b-container>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="pb-5">
+  <div class="mt-5 py-5">
     <b-row>
       <b-col cols="12" md="2" tag="header">
         <form class="category-wrapper" @change="getWork(categorySelected)">
@@ -70,7 +70,7 @@
 import { db, allWorks } from "~/plugins/firebase.js";
 
 export default {
-  layout: "Empty",
+  layout: "Default",
   async asyncData() {
     const items = await allWorks();
     const categories = [...new Set(items.map(r => r.exp))];
