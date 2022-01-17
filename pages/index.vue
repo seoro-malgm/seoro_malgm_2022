@@ -8,8 +8,12 @@
           :class="
             scrollY < introHeight ? 'position-fixed' : 'position-absolute'
           "
+          :style="
+            scrollY < introHeight
+              ? {}
+              : { top: `${w < 768 ? introHeight * 2 : introHeight}px` }
+          "
           class="d-none d-md-block"
-          :style="scrollY < introHeight ? {} : { top: `${introHeight}px` }"
         />
         <h2
           class="d-block d-md-none text-14 w-100 text-center position-absolute text-uppercase"
@@ -151,6 +155,7 @@ export default {
       // intro
       // three
       loaded: false,
+      w: null,
       introHeight: null,
 
       // mouse X, Y
@@ -251,11 +256,14 @@ export default {
   },
   methods: {
     init() {
-      this.introHeight = Math.round(window.innerHeight);
+      this.w = window.innerWidth;
+      this.introHeight = Math.round(
+        this.w < 768 ? window.innerHeight * 2 : window.innerHeight
+      );
       this.loaded = true;
       const scene = new THREE.Scene();
 
-      const w = window.innerWidth;
+      const w = this.w;
       const h = this.introHeight;
       const camera = new THREE.PerspectiveCamera(
         // 거리, 크기,
@@ -264,7 +272,12 @@ export default {
         0.1,
         1000
       );
-      camera.position.set(0, 0, 20);
+      if (this.w < 768) {
+        console.log(this.w);
+        camera.position.set(0, 25, 5);
+      } else {
+        camera.position.set(0, 0, 20);
+      }
 
       // canvas setting
       const canvas = this.$refs.intro;
@@ -364,9 +377,9 @@ export default {
 
       // 리사이즈 감지
       window.addEventListener("resize", () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.aspect = this.w / window.innerHeight;
         camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(this.w, window.innerHeight);
       });
 
       // 스크롤 감지
@@ -374,10 +387,14 @@ export default {
         if (this.scrollY <= this.introHeight) {
           camera.position.set(0, 0, this.scrollY * 0.05 + 10);
           cube.rotation.set(0, 0, this.scrollY * 0.0048);
+          cube.position.set(7.9, -0.5, 5);
+          cube.geometry = new THREE.TorusGeometry(11.8, 3, 10, 4);
         }
         if (this.scrollY >= this.introHeight) {
-          camera.position.set(0, 0, this.introHeight * 0.05 + 10);
+          camera.position.set(2, 0, this.introHeight * 0.05 + 10);
           cube.rotation.set(0, 0, 0.79);
+          cube.geometry = new THREE.TorusGeometry(5.8, 1.6, 10, 4);
+          cube.position.set(4, -0.5, 35);
         }
       });
     },

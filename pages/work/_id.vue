@@ -94,6 +94,7 @@ export default {
 
 .work-text /deep/ * {
   font-size: 18px;
+  color: $secondary !important;
   @media all and (max-width: 768px) {
     font-size: 16px;
   }
