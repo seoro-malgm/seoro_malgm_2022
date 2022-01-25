@@ -1,5 +1,5 @@
 <template>
-  <figure>
+  <figure :variant="variant">
     <div class="wrapper">
       <img :src="item.src || item.thumbnailURL" :alt="item.title" />
     </div>
@@ -28,6 +28,10 @@ export default {
     hideCaption: {
       type: Boolean,
       default: false
+    },
+    variant: {
+      type: String,
+      default: null
     }
   }
 };
@@ -49,6 +53,11 @@ figure {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+    }
+  }
+  &[variant="large"] {
+    .wrapper {
+      padding-bottom: 100%;
     }
   }
   figcaption {

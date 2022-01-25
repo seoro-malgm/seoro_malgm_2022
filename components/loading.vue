@@ -1,6 +1,6 @@
 <template>
   <div class="p-5 text-center">
-    <b-spinner />
+    <b-spinner variant="secondary" />
   </div>
 </template>
 

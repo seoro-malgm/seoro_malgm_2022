@@ -43,24 +43,29 @@
         </form>
       </b-col>
       <b-col cols="12" md="10" tag="section">
-        <b-row class="mx-n1">
-          <b-col
-            cols="12"
-            md="4"
-            class="mb-3 mb-md-5 px-1"
-            v-for="(item, i) in works"
-            :key="i"
-            tag="article"
-          >
-            <b-btn
-              variant="link reset w-100 p-0 border-0"
-              role="link"
-              @click="$router.push(`/work/${item.no}`)"
+        <template v-if="loading">
+          <loading />
+        </template>
+        <template v-if="!loading && works.length">
+          <b-row class="mx-n1">
+            <b-col
+              cols="12"
+              md="4"
+              class="mb-3 mb-md-5 px-1"
+              v-for="(item, i) in works"
+              :key="i"
+              tag="article"
             >
-              <media-image :item="item" :hideCaption="true" />
-            </b-btn>
-          </b-col>
-        </b-row>
+              <b-btn
+                variant="link reset w-100 p-0 border-0"
+                role="link"
+                @click="$router.push(`/work/${item.no}`)"
+              >
+                <media-image :item="item" :hideCaption="true" />
+              </b-btn>
+            </b-col>
+          </b-row>
+        </template>
       </b-col>
     </b-row>
   </div>
@@ -81,13 +86,14 @@ export default {
   },
   head() {
     return {
-      title: `서로맑음 | WORK`
+      title: `WORK | 서로맑음`
     };
   },
   data() {
     return {
       categorySelected: null,
-      works: null
+      works: null,
+      loading: true
     };
   },
   async mounted() {
@@ -95,11 +101,13 @@ export default {
   },
   methods: {
     async getWork(category) {
+      this.loading = true;
       if (category) {
         this.works = this.items.filter(r => r.exp === category);
       } else {
         this.works = this.items;
       }
+      this.loading = false;
     },
     getWorkLength(category) {
       return this.items.filter(r => r.exp === category).length;

@@ -3,22 +3,30 @@
     <template v-if="currentWork">
       <header class="mb-5">
         <b-btn
-          variant="text mb-3 p-0 text-secondary d-block d-md-none"
+          variant="text mb-3 p-0 text-secondary d-flex d-md-none"
           to="/work"
-          >GO BACK</b-btn
         >
-        <h1>
-          {{ currentWork.title }}
-        </h1>
+          <icons-arrow-back /> GO BACK
+        </b-btn>
       </header>
-      <b-row tag="section">
+      <b-row tag="section" class="pb-5 pb-md-0">
         <b-col cols="12" md="8" order="2" order-md="1">
           <div class="work-desc" v-html="currentWork.desc" />
         </b-col>
         <b-col cols="12" md="4" order="1" order-md="2">
+          <h1 class="work-title">
+            {{ currentWork.title }}
+          </h1>
           <div class="work-text" v-html="currentWork.txt" />
         </b-col>
       </b-row>
+      <b-btn
+        variant="primary btn-go-top"
+        @click="goTop"
+        :style="active ? { bottom: '2rem' } : { bottom: '-5rem' }"
+      >
+        <icons-arrow-top /> GO TOP
+      </b-btn>
     </template>
     <template v-else>
       <loading />
@@ -46,12 +54,12 @@ export default {
   },
   head() {
     return {
-      title: `서로맑음 | ${this.currentWork.title}`,
+      title: `${this.currentWork.title} | 서로맑음`,
       meta: [
         {
           hid: "title",
           property: "title",
-          content: `서로맑음 | ${this.currentWork.title}`
+          content: `${this.currentWork.title} | 서로맑음`
         },
         {
           hid: "description",
@@ -70,11 +78,48 @@ export default {
         }
       ]
     };
+  },
+  beforeMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+  data() {
+    return {
+      active: false
+    };
+  },
+
+  methods: {
+    goTop() {
+      window.scrollTo(0, 0);
+    },
+    handleScroll() {
+      this.active = !!(window.scrollY > 180);
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.work-title {
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  font-weight: 900;
+  @media all and (max-width: 768px) {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+  }
+}
+
+.work-desc {
+  @media all and (max-width: 768px) {
+    padding-top: 2rem;
+    font-size: 2rem;
+  }
+}
+
 .work-desc /deep/ p {
   margin: 0;
 }
@@ -93,10 +138,18 @@ export default {
 }
 
 .work-text /deep/ * {
-  font-size: 18px;
+  font-size: 15px;
+  line-height: 1.8;
   color: $secondary !important;
-  @media all and (max-width: 768px) {
-    font-size: 16px;
-  }
+}
+
+.btn-go-top {
+  padding: 12px 16px;
+  color: $secondary;
+  border-radius: 4rem;
+  display: flex;
+  position: fixed;
+  transition: 0.3s;
+  right: 2rem;
 }
 </style>

@@ -2,29 +2,35 @@
   <section id="index">
     <article>
       <div class="intro-wrapper">
+        <h2
+          class="d-block d-md-none text-14 w-100 text-center position-fixed text-uppercase"
+          :style="[
+            scrollY < 100 ? { opacity: 1 } : { opacity: 0 },
+            {
+              bottom: '10vh',
+              zIndex: '2010',
+              transition: '0.4s',
+              pointerEvents: 'none'
+            }
+          ]"
+        >
+          Scroll Down
+          <div class="d-flex justify-content-center mt-2">
+            <icons-arrow-bottom />
+          </div>
+        </h2>
         <canvas
           id="canvas"
           ref="intro"
           :class="
             scrollY < introHeight ? 'position-fixed' : 'position-absolute'
           "
-          :style="
-            scrollY < introHeight
-              ? {}
-              : { top: `${w < 768 ? introHeight * 2 : introHeight}px` }
-          "
-          class="d-none d-md-block"
+          :style="[scrollY < introHeight ? {} : { top: `${introHeight}px` }]"
         />
-        <h2
-          class="d-block d-md-none text-14 w-100 text-center position-absolute text-uppercase"
-          :style="{ bottom: '10vh' }"
-        >
-          Scroll Down
-        </h2>
       </div>
     </article>
 
-    <article class="mt-100vh about-wrapper">
+    <article class="mt-100vh mt-sm-130vh about-wrapper">
       <b-container fluid>
         <b-row tag="header" class="about-header mx-0" align-h="center">
           <b-col
@@ -82,10 +88,15 @@
               </b-btn>
             </b-col>
           </b-row>
-          <div class="text-center mt-5">
-            <b-btn variant="primary text-24 text-md-32" to="/work"
-              >MORE WORKS &gt;</b-btn
-            >
+          <div class="text-right text-md-center mt-3 mt-md-4">
+            <b-btn
+              variant="primary rounded-pill px-0 px-md-4 py-2 text-24 text-md-32"
+              to="/work"
+              >MORE WORKS
+              <div class="d-inline-flex">
+                <icons-arrow-next class="ml-2" />
+              </div>
+            </b-btn>
           </div>
         </template>
         <template v-else>
@@ -116,7 +127,7 @@
             :key="i"
           >
             <a :href="item.url" class="reset" role="link" target="_blank">
-              <media-image :item="item" />
+              <media-image variant="large" :item="item" />
             </a>
           </b-col>
         </b-row>
@@ -257,9 +268,7 @@ export default {
   methods: {
     init() {
       this.w = window.innerWidth;
-      this.introHeight = Math.round(
-        this.w < 768 ? window.innerHeight * 2 : window.innerHeight
-      );
+      this.introHeight = Math.round(window.innerHeight);
       this.loaded = true;
       const scene = new THREE.Scene();
 
@@ -272,12 +281,6 @@ export default {
         0.1,
         1000
       );
-      if (this.w < 768) {
-        console.log(this.w);
-        camera.position.set(0, 25, 5);
-      } else {
-        camera.position.set(0, 0, 20);
-      }
 
       // canvas setting
       const canvas = this.$refs.intro;
@@ -384,17 +387,33 @@ export default {
 
       // 스크롤 감지
       window.addEventListener("scroll", () => {
-        if (this.scrollY <= this.introHeight) {
-          camera.position.set(0, 0, this.scrollY * 0.05 + 10);
-          cube.rotation.set(0, 0, this.scrollY * 0.0048);
-          cube.position.set(7.9, -0.5, 5);
-          cube.geometry = new THREE.TorusGeometry(11.8, 3, 10, 4);
-        }
-        if (this.scrollY >= this.introHeight) {
-          camera.position.set(2, 0, this.introHeight * 0.05 + 10);
-          cube.rotation.set(0, 0, 0.79);
-          cube.geometry = new THREE.TorusGeometry(5.8, 1.6, 10, 4);
-          cube.position.set(4, -0.5, 35);
+        const y = this.w < 1280 ? this.scrollY * 1.5 : this.scrollY * 1;
+        if (this.w < 1280) {
+          if (y <= this.introHeight) {
+            camera.position.set(0, 0, y * 0.07 + 10);
+            cube.rotation.set(0, 0, y * 0.0048);
+            cube.position.set(7.9, -0.5, 5);
+            cube.geometry = new THREE.TorusGeometry(11.8, 3, 10, 4);
+          }
+          if (y >= this.introHeight) {
+            camera.position.set(0, 0, 75);
+            cube.rotation.set(0, 0, 0.79);
+            cube.geometry = new THREE.TorusGeometry(5.8, 1.6, 10, 4);
+            cube.position.set(4, -0.5, 35);
+          }
+        } else {
+          if (y <= this.introHeight) {
+            camera.position.set(0, 0, y * 0.05 + 10);
+            cube.rotation.set(0, 0, y * 0.0048);
+            cube.position.set(7.9, -0.5, 5);
+            cube.geometry = new THREE.TorusGeometry(11.8, 3, 10, 4);
+          }
+          if (y >= this.introHeight) {
+            camera.position.set(2, 0, this.introHeight * 0.05 + 10);
+            cube.rotation.set(0, 0, 0.79);
+            cube.geometry = new THREE.TorusGeometry(5.8, 1.6, 10, 4);
+            cube.position.set(4, -0.5, 35);
+          }
         }
       });
     },
@@ -436,11 +455,13 @@ article {
   background-color: transparent;
   // margin: 0 -2rem;
   margin: 0;
-  position: relative;
+  @media all and(min-width:1280px) {
+    position: relative;
+  }
 
   #canvas {
     top: 0;
-    left: 0;
+    left: 0 !important;
     z-index: 2000;
   }
 }
@@ -469,6 +490,11 @@ article {
 .mt-100vh {
   @media all and (min-width: 768px) {
     margin-top: 100vh !important;
+  }
+}
+.mt-sm-130vh {
+  @media all and (max-width: 768px) {
+    margin-top: 130vh !important;
   }
 }
 </style>

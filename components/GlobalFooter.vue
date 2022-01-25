@@ -9,7 +9,7 @@
       </p>
       <ul>
         <li class="mb-2 ">
-          <span class="text-16 text-md-18"
+          <span class="text-14 text-md-16"
             >Email:
             <!-- <a
               role="button"
@@ -26,7 +26,7 @@
           </span>
         </li>
         <li class="mb-2 ">
-          <span class="text-16 text-md-18"
+          <span class="text-14 text-md-16"
             >Address:
             <a
               role="button"
@@ -37,13 +37,13 @@
                   '주소'
                 )
               "
-              >대한민국 서울시 마포구 성산로 4길 54-11, 203호
+              >서울시 마포구 성산로 4길 54-11, 203호
             </a>
           </span>
         </li>
         <li class="mb-2 ">
           <b-btn
-            variant="link text-primary p-0 text-16 text-md-18"
+            variant="link text-primary p-0 text-14 text-md-16"
             href="https://www.instagram.com/seoro_malgm/"
             target="_blank"
             >Instagram</b-btn
@@ -51,7 +51,7 @@
         </li>
         <li class="mb-2 ">
           <b-btn
-            variant="link text-primary p-0 text-16 text-md-18"
+            variant="link text-primary p-0 text-14 text-md-16"
             href="https://brunch.co.kr/@seoro-malgm"
             target="_blank"
             >Brunch</b-btn

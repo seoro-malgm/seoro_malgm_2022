@@ -1,110 +1,12 @@
-// variable
-
-$icon-size: (
-  8,
-  12,
-  13,
-  14,
-  15,
-  16,
-  18,
-  20,
-  24,
-  26,
-  28,
-  32,
-  36,
-  40,
-  48,
-  56,
-  64,
-  72,
-  76,
-  86,
-  100
-);
-
-// $icons-svg: (shield, verified, unverified);
-
-$icons: ();
-
-// $icons-svg: ();
-
 i.icon {
+  position: relative;
   width: 24px;
-  min-width: 24px;
   height: 24px;
-  display: inline-block;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: relative;
-  // input 위에 올라갈경우 input이 포커스일 때, 아이콘이 가려지는 경우가 있어서 임의로 z-index를 넣음
-  z-index: 2;
-
-  @each $var in $icon-size {
-    &.icon-#{$var} {
-      min-width: #{$var}#{px};
-      width: #{$var}#{px};
-      height: #{$var}#{px};
-    }
-  }
-
-  @each $var in $icons {
-    &.icon-#{$var} {
-      background-image: url(../icons/#{$var}.svg);
-    }
-  }
-
-  // @each $var in $icons-svg {
-  //   &.icon-#{$var} {
-  //     background-image: url(../assets/icons/#{$var}.svg);
-  //   }
-  // }
-}
-
-// $router-link-exact-active-icons: ();
-
-// .router-link {
-//   @each $var in $router-link-exact-active-icons {
-//     .icon-link-#{$var} {
-//       background-image: url(../assets/v2/#{$var}-color.svg);
-//     }
-//     &.router-link-exact-active .icon-link-#{$var} {
-//       background-image: url(../assets/v2/#{$var}.svg);
-//     }
-//   }
-// }
-
-.appear {
-  position: relative;
-  .icon-after {
+  .line {
+    display: block;
+    content: "";
     position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  input {
-    height: 48px;
-  }
-}
-
-// .btn:hover,
-// .btn.active {
-//   @each $var in $hover-icons {
-//     .icon-#{$var} {
-//       background-image: url(../icons/#{$var}-w);
-//     }
-//   }
-// }
-
-$icon-md-size: (8, 12, 14, 16, 18, 20, 24, 28, 30, 32, 40);
-@media screen and (min-width: 768px) {
-  @each $var in $icon-md-size {
-    i.icon.icon-md-#{$var} {
-      min-width: #{$var}#{px};
-      width: #{$var}#{px};
-      height: #{$var}#{px};
-    }
+    height: 2px;
+    background-color: $secondary;
   }
 }

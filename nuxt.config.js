@@ -1,4 +1,5 @@
 export default {
+  ssr: true,
   head: {
     title: "서로맑음",
     htmlAttrs: {

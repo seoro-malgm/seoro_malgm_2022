@@ -15,26 +15,27 @@
       >
         <Logo />
       </b-navbar-brand>
-      <div class="ml-auto d-flex align-items-center">
-        <nuxt-link class="nuxt-link text-reset" to="/work">
-          <span>work</span>
-        </nuxt-link>
-        <b-btn
-          class="link nuxt-link text-reset"
-          href="https://marpple.shop/kr/seoro_malgm"
-          target="_blank"
-        >
-          <span>product</span>
-        </b-btn>
-        <!-- <nuxt-link class="nuxt-link text-reset" to="/contact">
-          <span>contact</span>
-        </nuxt-link> -->
+      <div class="ml-auto d-none d-md-block">
+        <ul class="d-flex align-items-center">
+          <li v-for="(item, i) in links" :key="i">
+            <template v-if="item.type === 'anchor'">
+              <b-btn class="link nuxt-link" :href="item.url" target="_blank">
+                <span>{{ item.name }}</span>
+              </b-btn>
+            </template>
+            <template v-else>
+              <nuxt-link class="nuxt-link" :to="item.url" role="link">
+                <span>{{ item.name }}</span>
+              </nuxt-link>
+            </template>
+          </li>
+        </ul>
       </div>
-      <!-- <div class="ml-auto d-block d-md-none">
+      <div class="ml-auto d-block d-md-none">
         <b-btn variant="text p-0 text-secondary" @click="$emit('menu-toggle')">
           MENU
         </b-btn>
-      </div> -->
+      </div>
     </b-navbar>
   </b-container>
 </template>
@@ -46,14 +47,11 @@ export default {
     scrollY: {
       type: Number,
       default: null
+    },
+    links: {
+      type: Array,
+      default: []
     }
-  },
-  data() {
-    return {
-      links: {
-        contact: "cantact"
-      }
-    };
   }
 };
 </script>
@@ -81,15 +79,21 @@ export default {
   }
 
   .nuxt-link {
+    display: block;
     text-transform: uppercase;
     text-decoration: none;
     background-color: $primary;
     border-color: $primary;
     border-radius: 0;
-    padding: 0 2px;
+    padding: 12px 6px;
+    border: 0;
     opacity: 0.7;
-    &:not(:first-child) {
-      margin-left: 1rem;
+    margin-left: 1rem;
+    height: inherit;
+    line-height: 0;
+    span {
+      font-size: 16px;
+      line-height: 0;
     }
     &:hover,
     &:active,

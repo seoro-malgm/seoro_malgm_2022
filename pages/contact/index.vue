@@ -9,7 +9,7 @@ export default {
   layout: "Empty",
   head() {
     return {
-      title: `서로맑음 | CONTACT`
+      title: `CONTACT | 서로맑음`
     };
   }
 };
