@@ -7,57 +7,59 @@
         프로젝트 문의와 채용, 기타 문의 등 모두 메일로 받고 있습니다. <br />
         아래 연락처들을 통해 언제든 연락 가능합니다.
       </p>
-      <ul>
-        <li class="mb-2 ">
-          <span class="text-14 text-md-16"
-            >Email:
-            <!-- <a
+      <client-only>
+        <ul>
+          <li class="mb-2 ">
+            <span class="text-14 text-md-16"
+              >Email:
+              <!-- <a
               role="button"
               class="text-primary"
               @click="copyText('contact@seoro-malgm.me', '이메일 주소')"
               >contact@seoro-malgm.me
             </a> -->
-            <a
-              role="button"
-              class="text-primary"
-              @click="copyText('seoromalgm@kakao.com', '이메일 주소')"
-              >seoromalgm@kakao.com
-            </a>
-          </span>
-        </li>
-        <li class="mb-2 ">
-          <span class="text-14 text-md-16"
-            >Address:
-            <a
-              role="button"
-              class="text-primary"
-              @click="
-                copyText(
-                  '대한민국 서울시 마포구 성산로 4길 54-11, 203호',
-                  '주소'
-                )
-              "
-              >서울시 마포구 성산로 4길 54-11, 203호
-            </a>
-          </span>
-        </li>
-        <li class="mb-2 ">
-          <b-btn
-            variant="link text-primary p-0 text-14 text-md-16"
-            href="https://www.instagram.com/seoro_malgm/"
-            target="_blank"
-            >Instagram</b-btn
-          >
-        </li>
-        <li class="mb-2 ">
-          <b-btn
-            variant="link text-primary p-0 text-14 text-md-16"
-            href="https://brunch.co.kr/@seoro-malgm"
-            target="_blank"
-            >Brunch</b-btn
-          >
-        </li>
-      </ul>
+              <a
+                role="button"
+                class="text-primary"
+                @click="copyText('seoromalgm@kakao.com', '이메일 주소')"
+                >seoromalgm@kakao.com
+              </a>
+            </span>
+          </li>
+          <li class="mb-2 ">
+            <span class="text-14 text-md-16"
+              >Address:
+              <a
+                role="button"
+                class="text-primary"
+                @click="
+                  copyText(
+                    '대한민국 서울시 마포구 성산로 4길 54-11, 203호',
+                    '주소'
+                  )
+                "
+                >서울시 마포구 성산로 4길 54-11, 203호
+              </a>
+            </span>
+          </li>
+          <li class="mb-2 ">
+            <b-btn
+              variant="link text-primary p-0 text-14 text-md-16"
+              href="https://www.instagram.com/seoro_malgm/"
+              target="_blank"
+              >Instagram</b-btn
+            >
+          </li>
+          <li class="mb-2 ">
+            <b-btn
+              variant="link text-primary p-0 text-14 text-md-16"
+              href="https://brunch.co.kr/@seoro-malgm"
+              target="_blank"
+              >Brunch</b-btn
+            >
+          </li>
+        </ul>
+      </client-only>
     </div>
   </footer>
 </template>

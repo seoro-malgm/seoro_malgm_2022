@@ -1,0 +1,30 @@
+[
+  {
+    "name": "contact",
+    "path": "/contact",
+    "component": "/Users/maglm/Desktop/dev/dev_2022/seoro-malgm/pages/contact/index.vue",
+    "chunkName": "pages/contact/index",
+    "_name": "_2d51ec8d"
+  },
+  {
+    "name": "work",
+    "path": "/work",
+    "component": "/Users/maglm/Desktop/dev/dev_2022/seoro-malgm/pages/work/index.vue",
+    "chunkName": "pages/work/index",
+    "_name": "_6efe14da"
+  },
+  {
+    "name": "work-id",
+    "path": "/work/:id",
+    "component": "/Users/maglm/Desktop/dev/dev_2022/seoro-malgm/pages/work/_id.vue",
+    "chunkName": "pages/work/_id",
+    "_name": "_0e40f47c"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/maglm/Desktop/dev/dev_2022/seoro-malgm/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_7e651dbc"
+  }
+]

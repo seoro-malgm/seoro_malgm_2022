@@ -9,8 +9,11 @@ export default {
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "format-detection", content: "telephone=no" },
-      { name: "title", content: "디자이너 서로맑음 이상준" },
-      { name: "description", content: "디자이너 서로맑음 이상준" },
+      {
+        hid: "title",
+        name: "title",
+        content: "디자이너 서로맑음 이상준"
+      },
       {
         hid: "description",
         name: "description",
@@ -21,15 +24,17 @@ export default {
         content: "디자이너 서로맑음 이상준"
       },
       {
+        hid: "og:image",
         property: "og:image",
-        content:
-          "https://firebasestorage.googleapis.com/v0/b/seoro-malgm.appspot.com/o/og-image.png?alt=media&token=4cc2eadb-9332-45d2-a4d3-fd5212503676"
+        content: "/og-mage.png"
       },
       {
+        hid: "og:title",
         property: "og:title",
         content: "디자이너 서로맑음 이상준"
       },
       {
+        hid: "og:description",
         property: "og:description",
         content: "UI/UX, Branding, Calligraphy, Graphic"
       }
@@ -146,6 +151,10 @@ export default {
   build: {
     transpile: ["three"]
   },
+  buildDir: "client",
+  generate: {
+    dir: "dist"
+  },
 
   modules: ["bootstrap-vue/nuxt", "@nuxtjs/style-resources"],
 
@@ -155,10 +164,6 @@ export default {
   bootstrapVue: {
     // bootstrapCSS: false,
     // bootstrapVueCSS: false
-  },
-
-  generate: {
-    dir: "dist"
   },
 
   axios: {},

@@ -51,13 +51,15 @@
     <div class="menu-dim" :class="{ active: menuToggle }" />
     <div id="side-menu" :class="{ active: menuToggle }">
       <section class="d-flex flex-column w-100 h-100 pb-3">
-        <ul class="list-unstyled d-inline-flex flex-column mt-4 flex-gorw-1">
+        <ul
+          class="list-unstyled d-inline-flex align-items-end flex-column mt-4 flex-gorw-1"
+        >
           <li>
-            <nuxt-link class="nuxt-link" to="/" role="link">
+            <nuxt-link class="nuxt-link ml-auto" to="/" role="link">
               <span>HOME</span>
             </nuxt-link>
           </li>
-          <li v-for="(item, i) in links" :key="i">
+          <li v-for="(item, i) in links" :key="i" class="ml-auto">
             <template v-if="item.type === 'anchor'">
               <a class="link nuxt-link" :href="item.url" target="_blank">
                 <span>{{ item.name }}</span>
@@ -71,57 +73,59 @@
           </li>
         </ul>
         <div class="mt-auto mb-5">
-          <ul class="footer-links">
-            <li class="mb-2 ">
-              <span class="text-14 text-md-16"
-                >Email: <br />
-                <!-- <a
+          <client-only>
+            <ul class="footer-links">
+              <li class="mb-2 ">
+                <span class="text-14 text-md-16"
+                  >Email: <br />
+                  <!-- <a
               role="button"
               class=""
               @click="copyText('contact@seoro-malgm.me', '이메일 주소')"
               >contact@seoro-malgm.me
             </a> -->
-                <a
-                  role="button"
-                  class="text-underline"
-                  @click="copyText('seoromalgm@kakao.com', '이메일 주소')"
-                  >seoromalgm@kakao.com
-                </a>
-              </span>
-            </li>
-            <li class="mb-2 ">
-              <span class="text-14 text-md-16"
-                >Address: <br />
-                <a
-                  role="button"
-                  class="text-underline"
-                  @click="
-                    copyText(
-                      '대한민국 서울시 마포구 성산로 4길 54-11, 203호',
-                      '주소'
-                    )
-                  "
-                  >서울시 마포구 성산로 4길 54-11, 203호
-                </a>
-              </span>
-            </li>
-            <li class="mb-2 ">
-              <b-btn
-                variant="link p-0 text-14 text-md-16 text-underline"
-                href="https://www.instagram.com/seoro_malgm/"
-                target="_blank"
-                >Instagram</b-btn
-              >
-            </li>
-            <li class="mb-2 ">
-              <b-btn
-                variant="link p-0 text-14 text-md-16 text-underline"
-                href="https://brunch.co.kr/@seoro-malgm"
-                target="_blank"
-                >Brunch</b-btn
-              >
-            </li>
-          </ul>
+                  <a
+                    role="button"
+                    class="text-underline"
+                    @click="copyText('seoromalgm@kakao.com', '이메일 주소')"
+                    >seoromalgm@kakao.com
+                  </a>
+                </span>
+              </li>
+              <li class="mb-2 ">
+                <span class="text-14 text-md-16"
+                  >Address: <br />
+                  <a
+                    role="button"
+                    class="text-underline"
+                    @click="
+                      copyText(
+                        '대한민국 서울시 마포구 성산로 4길 54-11, 203호',
+                        '주소'
+                      )
+                    "
+                    >서울시 마포구 성산로 4길 54-11, 203호
+                  </a>
+                </span>
+              </li>
+              <li class="mb-2 ">
+                <b-btn
+                  variant="link p-0 text-14 text-md-16 text-underline"
+                  href="https://www.instagram.com/seoro_malgm/"
+                  target="_blank"
+                  >Instagram</b-btn
+                >
+              </li>
+              <li class="mb-2 ">
+                <b-btn
+                  variant="link p-0 text-14 text-md-16 text-underline"
+                  href="https://brunch.co.kr/@seoro-malgm"
+                  target="_blank"
+                  >Brunch</b-btn
+                >
+              </li>
+            </ul>
+          </client-only>
         </div>
       </section>
     </div>

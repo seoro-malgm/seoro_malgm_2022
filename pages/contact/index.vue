@@ -10,54 +10,56 @@
       </p>
     </header>
     <section class="pt-4">
-      <ul>
-        <li class="mb-2 ">
-          <span class="text-14 text-md-16"
-            >Email:
-            <!-- <a
+      <client-only>
+        <ul>
+          <li class="mb-2 ">
+            <span class="text-14 text-md-16"
+              >Email:
+              <!-- <a
               role="button"
               @click="copyText('contact@seoro-malgm.me', '이메일 주소')"
               >contact@seoro-malgm.me
             </a> -->
-            <a
-              role="button"
-              @click="copyText('seoromalgm@kakao.com', '이메일 주소')"
-              >seoromalgm@kakao.com
-            </a>
-          </span>
-        </li>
-        <li class="mb-2 ">
-          <span class="text-14 text-md-16"
-            >Address:
-            <a
-              role="button"
-              @click="
-                copyText(
-                  '대한민국 서울시 마포구 성산로 4길 54-11, 203호',
-                  '주소'
-                )
-              "
-              >서울시 마포구 성산로 4길 54-11, 203호
-            </a>
-          </span>
-        </li>
-        <li class="mb-2 ">
-          <b-btn
-            variant="link  p-0 text-14 text-md-16"
-            href="https://www.instagram.com/seoro_malgm/"
-            target="_blank"
-            >Instagram</b-btn
-          >
-        </li>
-        <li class="mb-2 ">
-          <b-btn
-            variant="link  p-0 text-14 text-md-16"
-            href="https://brunch.co.kr/@seoro-malgm"
-            target="_blank"
-            >Brunch</b-btn
-          >
-        </li>
-      </ul>
+              <a
+                role="button"
+                @click="copyText('seoromalgm@kakao.com', '이메일 주소')"
+                >seoromalgm@kakao.com
+              </a>
+            </span>
+          </li>
+          <li class="mb-2 ">
+            <span class="text-14 text-md-16"
+              >Address:
+              <a
+                role="button"
+                @click="
+                  copyText(
+                    '대한민국 서울시 마포구 성산로 4길 54-11, 203호',
+                    '주소'
+                  )
+                "
+                >서울시 마포구 성산로 4길 54-11, 203호
+              </a>
+            </span>
+          </li>
+          <li class="mb-2 ">
+            <b-btn
+              variant="link  p-0 text-14 text-md-16"
+              href="https://www.instagram.com/seoro_malgm/"
+              target="_blank"
+              >Instagram</b-btn
+            >
+          </li>
+          <li class="mb-2 ">
+            <b-btn
+              variant="link  p-0 text-14 text-md-16"
+              href="https://brunch.co.kr/@seoro-malgm"
+              target="_blank"
+              >Brunch</b-btn
+            >
+          </li>
+        </ul>
+      </client-only>
     </section>
   </section>
 </template>

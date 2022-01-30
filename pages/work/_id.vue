@@ -67,6 +67,11 @@ export default {
           content: this.currentWork.txt
         },
         {
+          hid: "og:title",
+          property: "og:title",
+          content: `${this.currentWork.title} | 서로맑음`
+        },
+        {
           hid: "og:image",
           property: "og:image",
           content: this.currentWork.thumbnailURL
