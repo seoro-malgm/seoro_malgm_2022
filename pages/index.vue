@@ -3,7 +3,7 @@
     <article>
       <div class="intro-wrapper">
         <h2
-          class="d-block d-md-none text-14 w-100 text-center position-fixed text-uppercase"
+          class=" text-14 w-100 text-center position-fixed text-uppercase text-16 text-md-24"
           :style="[
             scrollY < 100 ? { opacity: 1 } : { opacity: 0 },
             {

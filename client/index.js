@@ -12,8 +12,8 @@ import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_4107424c from 'nuxt_plugin_plugin_4107424c' // Source: ./components/plugin.js (mode: 'all')
-import nuxt_plugin_bootstrapvue_657ddb91 from 'nuxt_plugin_bootstrapvue_657ddb91' // Source: ./bootstrap-vue.js (mode: 'all')
+import nuxt_plugin_plugin_a2efcc86 from 'nuxt_plugin_plugin_a2efcc86' // Source: ./components/plugin.js (mode: 'all')
+import nuxt_plugin_bootstrapvue_52a3d8fc from 'nuxt_plugin_bootstrapvue_52a3d8fc' // Source: ./bootstrap-vue.js (mode: 'all')
 import nuxt_plugin_common_47fd80b8 from 'nuxt_plugin_common_47fd80b8' // Source: ../plugins/common.js (mode: 'all')
 import nuxt_plugin_firebase_27cb801c from 'nuxt_plugin_firebase_27cb801c' // Source: ../plugins/firebase.js (mode: 'all')
 
@@ -65,7 +65,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"서로맑음","htmlAttrs":{"lang":"ko-KR"},"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"name":"format-detection","content":"telephone=no"},{"hid":"title","name":"title","content":"디자이너 서로맑음 이상준"},{"hid":"description","name":"description","content":"디자이너 서로맑음 이상준"},{"name":"keyword","content":"디자이너 서로맑음 이상준"},{"hid":"og:image","property":"og:image","content":"\u002Fog-mage.png"},{"hid":"og:title","property":"og:title","content":"디자이너 서로맑음 이상준"},{"hid":"og:description","property":"og:description","content":"UI\u002FUX, Branding, Calligraphy, Graphic"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-57x57.png"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-60x60.png"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-72x72.png"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-76x76.png"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-114x114.png"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-120x120.png"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-144x144.png"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-152x152.png"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-180x180.png"},{"rel":"icon","type":"image\u002Fpng","href":"\u002Ffavicon\u002Fandroid-icon-192x192.png"},{"rel":"icon","type":"image\u002Fpng","href":"\u002Ffavicon\u002Ffavicon-32x32.png"},{"rel":"icon","type":"image\u002Fpng","href":"\u002Ffavicon\u002Ffavicon-96x96.png"},{"rel":"icon","type":"image\u002Fpng","href":"\u002Ffavicon\u002Ffavicon-16x16.png"}],"style":[],"script":[]},
+    head: {"title":"서로맑음","htmlAttrs":{"lang":"ko-KR"},"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"name":"format-detection","content":"telephone=no"},{"hid":"title","name":"title","content":"디자이너 서로맑음 이상준"},{"hid":"description","name":"description","content":"디자이너 서로맑음 이상준"},{"name":"keyword","content":"디자이너 서로맑음 이상준"},{"hid":"og:image","name":"og:image","property":"og:image","content":"\u002Fog-mage.png"},{"hid":"og:title","name":"og:title","property":"og:title","content":"디자이너 서로맑음 이상준"},{"hid":"og:description","name":"og:description","property":"og:description","content":"UI\u002FUX, Branding, Calligraphy, Graphic"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-57x57.png"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-60x60.png"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-72x72.png"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-76x76.png"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-114x114.png"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-120x120.png"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-144x144.png"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-152x152.png"},{"rel":"apple-touch-icon","href":"\u002Ffavicon\u002Fapple-icon-180x180.png"},{"rel":"icon","type":"image\u002Fpng","href":"\u002Ffavicon\u002Fandroid-icon-192x192.png"},{"rel":"icon","type":"image\u002Fpng","href":"\u002Ffavicon\u002Ffavicon-32x32.png"},{"rel":"icon","type":"image\u002Fpng","href":"\u002Ffavicon\u002Ffavicon-96x96.png"},{"rel":"icon","type":"image\u002Fpng","href":"\u002Ffavicon\u002Ffavicon-16x16.png"}],"style":[],"script":[]},
 
     router,
     nuxt: {
@@ -179,12 +179,12 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_4107424c === 'function') {
-    await nuxt_plugin_plugin_4107424c(app.context, inject)
+  if (typeof nuxt_plugin_plugin_a2efcc86 === 'function') {
+    await nuxt_plugin_plugin_a2efcc86(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_bootstrapvue_657ddb91 === 'function') {
-    await nuxt_plugin_bootstrapvue_657ddb91(app.context, inject)
+  if (typeof nuxt_plugin_bootstrapvue_52a3d8fc === 'function') {
+    await nuxt_plugin_bootstrapvue_52a3d8fc(app.context, inject)
   }
 
   if (typeof nuxt_plugin_common_47fd80b8 === 'function') {

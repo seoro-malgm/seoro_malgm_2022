@@ -56,31 +56,34 @@ export default {
     return {
       title: `${this.currentWork.title} | 서로맑음`,
       meta: [
-        {
-          hid: "title",
-          property: "title",
-          content: `${this.currentWork.title} | 서로맑음`
-        },
-        {
-          hid: "description",
-          property: "description",
-          content: this.currentWork.txt
-        },
-        {
-          hid: "og:title",
-          property: "og:title",
-          content: `${this.currentWork.title} | 서로맑음`
-        },
-        {
-          hid: "og:image",
-          property: "og:image",
-          content: this.currentWork.thumbnailURL
-        },
-        {
-          hid: "og:description",
-          property: "og:description",
-          content: this.currentWork.txt
-        }
+        // {
+        //   hid: "title",
+        //   name: "title",
+        //   property: "title",
+        //   content: `${this.currentWork.title} | 서로맑음`
+        // },
+        // {
+        //   hid: "description",
+        //   property: "description",
+        //   content: this.currentWork.txt
+        // },
+        // {
+        //   hid: "og:title",
+        //   property: "og:title",
+        //   name: "og:title",
+        //   content: `${this.currentWork.title} | 서로맑음`
+        // },
+        // {
+        //   hid: "og:image",
+        //   name: "og:title",
+        //   property: "og:image",
+        //   content: this.currentWork.thumbnailURL
+        // }
+        // {
+        //   hid: "og:description",
+        //   property: "og:description",
+        //   content: this.currentWork.txt
+        // }
       ]
     };
   },

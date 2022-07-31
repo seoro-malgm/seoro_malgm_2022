@@ -20,12 +20,6 @@
   "HeadingSection": {
     "description": "Auto imported from components/heading/section.vue"
   },
-  "MediaImage": {
-    "description": "Auto imported from components/media/image.vue"
-  },
-  "MediaLarge": {
-    "description": "Auto imported from components/media/large.vue"
-  },
   "IconsArrowBack": {
     "description": "Auto imported from components/icons/ArrowBack.vue"
   },
@@ -43,6 +37,12 @@
   },
   "IconsTimes": {
     "description": "Auto imported from components/icons/Times.vue"
+  },
+  "MediaImage": {
+    "description": "Auto imported from components/media/image.vue"
+  },
+  "MediaLarge": {
+    "description": "Auto imported from components/media/large.vue"
   },
   "MockupBrowser": {
     "description": "Auto imported from components/mockup/browser.vue"

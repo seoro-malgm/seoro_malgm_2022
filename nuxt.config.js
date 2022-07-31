@@ -25,16 +25,19 @@ export default {
       },
       {
         hid: "og:image",
+        name: "og:image",
         property: "og:image",
         content: "/og-mage.png"
       },
       {
         hid: "og:title",
+        name: "og:title",
         property: "og:title",
         content: "디자이너 서로맑음 이상준"
       },
       {
         hid: "og:description",
+        name: "og:description",
         property: "og:description",
         content: "UI/UX, Branding, Calligraphy, Graphic"
       }
